@@ -77,6 +77,7 @@ function PersonSection({
           name={`${prefix}MealChoice`}
           type="text"
           placeholder="Till exempel kött, fisk eller vegetariskt"
+          required
         />
       </div>
 
