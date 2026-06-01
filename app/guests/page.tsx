@@ -1,5 +1,6 @@
 import { deleteGuest } from "../actions/GuestActions";
 import GuestModel, { Guest } from "../models/Guest";
+import DeleteGuestForm from "../components/DeleteGuestForm";
 
 const GuestsPage = async () => {
   const guests: Guest[] = await GuestModel.find().lean();
@@ -82,14 +83,7 @@ const GuestsPage = async () => {
               <p>
                 <strong>Antal gäster:</strong> {guest.numberOfGuests}
               </p>
-              <form action={deleteGuest.bind(null, guest._id.toString())}>
-                <button
-                  type="submit"
-                  className="text-red-600 border hover:underline"
-                >
-                  Ta bort gäst
-                </button>
-              </form>
+              <DeleteGuestForm guestId={guest._id.toString()} />
             </li>
           ))
         )}
