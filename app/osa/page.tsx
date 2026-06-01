@@ -113,8 +113,8 @@ const OSAPage = () => {
             Vänligen svara på inbjudan
           </h1>
           <p className="mx-auto max-w-xl text-base leading-7 text-stone-600 sm:text-lg">
-            Fyll i din inbjudningskod och svara senast xxxx-xx-xx. Om du tar med
-            en +1 visas extra fält automatiskt.
+            Svara senast xxxx-xx-xx. Om du tar med en +1 visas extra fält
+            automatiskt.
           </p>
         </header>
 
