@@ -1,8 +1,10 @@
 import { deleteGuest } from "../actions/GuestActions";
 import GuestModel, { Guest } from "../models/Guest";
 import DeleteGuestForm from "../components/DeleteGuestForm";
+import { checkAuth } from "../actions/UserActions";
 
 const GuestsPage = async () => {
+  const authUser = await checkAuth();
   const guests: Guest[] = await GuestModel.find().lean();
   const amountOfAttending = guests.reduce(
     (total, guest) => total + guest.numberOfGuests,
@@ -13,6 +15,14 @@ const GuestsPage = async () => {
     (total, guest) => total + (guest.primaryGuest.attending ? 0 : 1),
     0,
   );
+  if (!authUser) {
+    return (
+      <main className="min-h-screen p-4 py-12sm:px-6 lg:px-8">
+        <h1 className="text-2xl font-bold mb-4">Gäster</h1>
+        <p className="mb-4">Du måste vara inloggad för att se gästlistan.</p>
+      </main>
+    );
+  }
   return (
     <main className="min-h-screen p-4 py-12sm:px-6 lg:px-8">
       <h1 className="text-2xl font-bold mb-4">Gäster</h1>
