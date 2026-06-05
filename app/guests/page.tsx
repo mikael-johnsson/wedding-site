@@ -3,6 +3,22 @@ import GuestModel, { Guest } from "../models/Guest";
 import DeleteGuestForm from "../components/DeleteGuestForm";
 import { checkAuth } from "../actions/UserActions";
 
+const formatDays = (days: string[] | undefined) => {
+  if (!days || days.length === 0) {
+    return "Inga valda dagar";
+  }
+
+  return days
+    .map((day) => {
+      if (day === "friday") return "Fredag";
+      if (day === "saturday") return "Lördag";
+      if (day === "sunday") return "Söndag";
+
+      return day;
+    })
+    .join(", ");
+};
+
 const GuestsPage = async () => {
   const authUser = await checkAuth();
   const guests: Guest[] = await GuestModel.find().lean();
@@ -57,9 +73,20 @@ const GuestsPage = async () => {
                 {guest.primaryGuest.mealChoice || "Ingen"}
               </p>
               <p>
-                {" "}
                 <strong>Meddelande:</strong>{" "}
                 {guest.primaryGuest.notes || "Inget"}
+              </p>
+              <p>
+                <strong>Dagar närvaro:</strong>{" "}
+                {formatDays(guest.primaryGuest.daysAttending)}
+              </p>
+              <p>
+                <strong>Dagar övernattning:</strong>{" "}
+                {formatDays(guest.primaryGuest.daysOvernighting)}
+              </p>
+              <p>
+                <strong>Transport:</strong>{" "}
+                {guest.primaryGuest.transport || "Ingen transport angiven"}
               </p>
               {guest.plusOne && (
                 <>
@@ -81,6 +108,18 @@ const GuestsPage = async () => {
                   <p>
                     <strong>+1 Meddelande:</strong>{" "}
                     {guest.plusOne.notes || "Inget meddelande"}
+                  </p>
+                  <p>
+                    <strong>+1 Dagar närvaro:</strong>{" "}
+                    {formatDays(guest.plusOne.daysAttending)}
+                  </p>
+                  <p>
+                    <strong>+1 Dagar övernattning:</strong>{" "}
+                    {formatDays(guest.plusOne.daysOvernighting)}
+                  </p>
+                  <p>
+                    <strong>+1 Transport:</strong>{" "}
+                    {guest.plusOne.transport || "Ingen transport angiven"}
                   </p>
                 </>
               )}

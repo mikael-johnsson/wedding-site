@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { connectDB } from "../lib/db";
-import GuestModel from "../models/Guest";
+import GuestModel, { WeddingDay } from "../models/Guest";
 import { revalidatePath } from "next/cache";
 
 type PersonInput = {
@@ -11,7 +11,12 @@ type PersonInput = {
   allergies: string;
   mealChoice: string;
   notes: string;
+  daysAttending: WeddingDay[];
+  daysOvernighting: WeddingDay[];
+  transport: string;
 };
+
+const weddingDays: WeddingDay[] = ["friday", "saturday", "sunday"];
 
 const readString = (formData: FormData, key: string) => {
   const value = formData.get(key);
@@ -23,6 +28,17 @@ const readBoolean = (formData: FormData, key: string) => {
   return formData.get(key) === "yes";
 };
 
+const readDays = (formData: FormData, key: string): WeddingDay[] => {
+  return formData
+    .getAll(key)
+    .filter((value): value is WeddingDay => {
+      return (
+        typeof value === "string" && weddingDays.includes(value as WeddingDay)
+      );
+    })
+    .map((value) => value as WeddingDay);
+};
+
 const readPerson = (formData: FormData, prefix: string): PersonInput => {
   return {
     name: readString(formData, `${prefix}Name`),
@@ -30,6 +46,9 @@ const readPerson = (formData: FormData, prefix: string): PersonInput => {
     allergies: readString(formData, `${prefix}Allergies`),
     mealChoice: readString(formData, `${prefix}MealChoice`),
     notes: readString(formData, `${prefix}Notes`),
+    daysAttending: readDays(formData, `${prefix}DaysAttending`),
+    daysOvernighting: readDays(formData, `${prefix}DaysOvernighting`),
+    transport: readString(formData, `${prefix}Transport`),
   };
 };
 

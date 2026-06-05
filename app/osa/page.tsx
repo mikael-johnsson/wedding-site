@@ -9,6 +9,45 @@ const fieldClasses =
 
 const labelClasses = "text-sm font-medium text-stone-700";
 
+const weddingDays = [
+  { value: "friday", label: "Fredag" },
+  { value: "saturday", label: "Lördag" },
+  { value: "sunday", label: "Söndag" },
+] as const;
+
+function DayCheckboxGroup({
+  prefix,
+  name,
+  title,
+}: {
+  prefix: "primary" | "plusOne";
+  name: "DaysAttending" | "DaysOvernighting";
+  title: string;
+}) {
+  return (
+    <fieldset className="grid gap-3 rounded-xl border border-stone-200 bg-white p-4">
+      <legend className="px-1 text-sm font-medium text-stone-700">
+        {title}
+      </legend>
+      <div className="grid gap-3 sm:grid-cols-3">
+        {weddingDays.map((day) => (
+          <label
+            key={day.value}
+            className="flex items-center gap-2 rounded-lg border border-stone-200 px-3 py-2 text-stone-700"
+          >
+            <input
+              name={`${prefix}${name}`}
+              type="checkbox"
+              value={day.value}
+            />
+            {day.label}
+          </label>
+        ))}
+      </div>
+    </fieldset>
+  );
+}
+
 function PersonSection({
   prefix,
   title,
@@ -91,6 +130,31 @@ function PersonSection({
           name={`${prefix}Notes`}
           rows={3}
           placeholder="Annan information vi behöver känna till"
+        />
+      </div>
+
+      <DayCheckboxGroup
+        name="DaysAttending"
+        prefix={prefix}
+        title="Vilka dagar är du med?"
+      />
+
+      <DayCheckboxGroup
+        name="DaysOvernighting"
+        prefix={prefix}
+        title="Vilka dagar sover du över?"
+      />
+
+      <div>
+        <label className={labelClasses} htmlFor={`${prefix}Transport`}>
+          Transport
+        </label>
+        <input
+          className={fieldClasses}
+          id={`${prefix}Transport`}
+          name={`${prefix}Transport`}
+          type="text"
+          placeholder="Till exempel egen bil, samåkning eller buss"
         />
       </div>
     </fieldset>
