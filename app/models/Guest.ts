@@ -1,16 +1,17 @@
 import { model, models, Schema } from "mongoose";
 
 export type WeddingDay = "friday" | "saturday" | "sunday";
+export type OvernightDay = "friday" | "saturday";
 
 type PersonInfo = {
   name: string;
   attending: boolean;
   allergies?: string;
-  mealChoice: string;
+  mealChoice?: string;
   notes?: string;
-  daysAttending: WeddingDay[];
-  daysOvernighting: WeddingDay[];
-  transport: string;
+  daysAttending?: WeddingDay[];
+  daysOvernighting?: OvernightDay[];
+  transport?: string;
 };
 
 export type Guest = {
@@ -27,19 +28,19 @@ const personInfoSchema = new Schema<PersonInfo>(
     name: { type: String, required: true, trim: true },
     attending: { type: Boolean, required: true, default: false },
     allergies: { type: String, required: false, default: "" },
-    mealChoice: { type: String, required: true, default: "" },
+    mealChoice: { type: String, required: false, default: "" },
     notes: { type: String, default: "" },
     daysAttending: {
       type: [String],
-      required: true,
+      required: false,
       default: [],
       enum: ["friday", "saturday", "sunday"],
     },
     daysOvernighting: {
       type: [String],
-      required: true,
+      required: false,
       default: [],
-      enum: ["friday", "saturday", "sunday"],
+      enum: ["friday", "saturday"],
     },
     transport: { type: String, required: false, default: "" },
   },

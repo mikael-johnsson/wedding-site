@@ -44,7 +44,7 @@ const Header = async () => {
         </nav>
         {authUser ? (
           <span className="justify-self-end p-3 mx-4  text-text-black">
-            Du är inloggad som, {authUser.username}!
+            Du är inloggad som: {authUser.username}!
           </span>
         ) : (
           <Link href="/login">
