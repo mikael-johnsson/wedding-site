@@ -1,12 +1,26 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect, Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { saveGuestRsvp } from "../actions/GuestActions";
 import PersonSection from "./formComponents/PersonSection";
 
-const OSAPage = () => {
+function SubmissionNotice() {
   const searchParams = useSearchParams();
+  const hasSubmitted = searchParams.get("submitted") === "1";
+
+  if (!hasSubmitted) {
+    return null;
+  }
+
+  return (
+    <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4 text-emerald-900">
+      Tack! Ditt svar är sparat.
+    </div>
+  );
+}
+
+const OSAPage = () => {
   const [hasPlusOne, setHasPlusOne] = useState(false);
   const [primaryAttending, setPrimaryAttending] = useState<boolean | null>(
     null,
@@ -16,7 +30,6 @@ const OSAPage = () => {
       setHasPlusOne(false);
     }
   }, [primaryAttending]);
-  const hasSubmitted = searchParams.get("submitted") === "1";
 
   return (
     <main className="min-h-screen px-4 py-12 text-text-black sm:px-6 lg:px-8">
@@ -30,12 +43,8 @@ const OSAPage = () => {
             automatiskt.
           </p>
         </header>
-        <Suspense fallback={<div>Loading...</div>}>
-          {hasSubmitted ? (
-            <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4 text-emerald-900">
-              Tack! Ditt svar är sparat.
-            </div>
-          ) : null}
+        <Suspense fallback={null}>
+          <SubmissionNotice />
         </Suspense>
 
         <form
