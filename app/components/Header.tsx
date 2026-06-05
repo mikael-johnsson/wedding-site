@@ -10,12 +10,12 @@ const Header = async () => {
         <nav className="grow-2 flex items-center justify-center">
           <Link href="/">
             <span className=" p-3 mx-4 font-bold text-text-black hover:underline">
-              VÄLKOMNA
+              HEM
             </span>
           </Link>
-          <Link href="/schedule">
+          <Link href="/helgen">
             <span className="rounded p-3 mx-4 font-bold text-text-black hover:underline">
-              UPPLÄGG
+              HELGEN
             </span>
           </Link>
 
@@ -24,9 +24,14 @@ const Header = async () => {
               OSA
             </span>
           </Link>
-          <Link href="/info">
+          <Link href="/kontakt">
             <span className="rounded p-3 mx-4 font-bold text-text-black hover:underline">
-              INFO
+              KONTAKT
+            </span>
+          </Link>
+          <Link href="/ovrigt">
+            <span className="rounded p-3 mx-4 font-bold text-text-black hover:underline">
+              ÖVRIGT
             </span>
           </Link>
           {authUser && (
