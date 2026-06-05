@@ -1,1 +1,7 @@
+@import "./styles/variables.css";
 @import "tailwindcss";
+
+body {
+  background-color: var(--color-bg-beige);
+  color: var(--color-text-black);
+}
