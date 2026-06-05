@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { saveGuestRsvp } from "../actions/GuestActions";
 import PersonSection from "./formComponents/PersonSection";
 
@@ -30,12 +30,13 @@ const OSAPage = () => {
             automatiskt.
           </p>
         </header>
-
-        {hasSubmitted ? (
-          <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4 text-emerald-900">
-            Tack! Ditt svar är sparat.
-          </div>
-        ) : null}
+        <Suspense fallback={<div>Loading...</div>}>
+          {hasSubmitted ? (
+            <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4 text-emerald-900">
+              Tack! Ditt svar är sparat.
+            </div>
+          ) : null}
+        </Suspense>
 
         <form
           action={saveGuestRsvp}
