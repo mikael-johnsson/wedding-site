@@ -1,3 +1,5 @@
+"use client";
+
 const weddingDays = [
   { value: "friday", label: "Fredag" },
   { value: "saturday", label: "Lördag" },
