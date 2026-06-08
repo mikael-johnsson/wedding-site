@@ -33,6 +33,9 @@ const LivingAndTransportPage = () => {
             <p>
               Har du ingen aning om hur du ska transportera dig? Hör av dig till
               brudparet så snart som möjligt så ska vi lösa det!
+              <p className="text-red-600">
+                Kontaktuppgifter till brudparet här??
+              </p>
             </p>
           </div>
         </div>
