@@ -22,7 +22,7 @@ const CountdownClock = () => {
 
   return (
     <div>
-      <div className=" text-center py-4 w-300 mx-auto flex gap-20 justify-center">
+      <div className="md:py-4 mx-auto flex gap-10 md:gap-20 justify-center">
         <div>
           <p>Dagar</p>
           <p>{timeRemaining.days}</p>
@@ -40,7 +40,7 @@ const CountdownClock = () => {
           <p>{timeRemaining.seconds}</p>
         </div>
       </div>
-      <p className="text-lg text-center">OSA senast 31 maj</p>
+      <p className="text-lg text-center mt-4">OSA senast 31 maj</p>
     </div>
   );
 };
