@@ -1,12 +1,21 @@
+import Image from "next/image";
 import CountdownClock from "./components/CountdownClock";
 
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen py-10">
-      <section className="h-screen">
-        <div className=" w-1/2 py-20 mx-auto">
-          <h1 className="text-5xl font-bold text-center">BERNOZZI WEDDING</h1>
-          <p className="text-xl text-center mt-15">10-12 sept 2027</p>
+      <section className="min-h-screen flex flex-col gap-10">
+        <div className="flex items-center flex-col md:flex-row md:gap-10">
+          <div className=" w-1/2 py-20 mx-auto">
+            <h1 className="text-5xl font-bold text-center">BERNOZZI WEDDING</h1>
+            <p className="text-xl text-center mt-15">10-12 sept 2027</p>
+          </div>
+          <Image
+            src="/couples_placeholder.jpg"
+            alt="Wedding"
+            width={800}
+            height={600}
+          />
         </div>
         <CountdownClock />
       </section>
