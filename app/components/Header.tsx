@@ -24,14 +24,19 @@ const Header = async () => {
               OSA
             </span>
           </Link>
-          <Link href="/kontakt">
+          <Link href="/boende">
             <span className="rounded p-3 mx-4 font-bold text-text-black hover:underline">
-              KONTAKT
+              BOENDE & TRANSPORT
             </span>
           </Link>
-          <Link href="/ovrigt">
+          <Link href="/toast">
             <span className="rounded p-3 mx-4 font-bold text-text-black hover:underline">
-              ÖVRIGT
+              TOAST
+            </span>
+          </Link>
+          <Link href="/gifts">
+            <span className="rounded p-3 mx-4 font-bold text-text-black hover:underline">
+              GÅVOR
             </span>
           </Link>
           {authUser && (

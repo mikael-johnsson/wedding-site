@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import DayCheckboxGroup from "./DayCheckboxGroup";
+import Link from "next/link";
 
 const fieldClasses =
   "mt-1 w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-stone-900 shadow-sm outline-none transition focus:border-stone-500 focus:ring-2 focus:ring-stone-200";
@@ -123,9 +124,14 @@ function PersonSection({
             title="Vilka dagar sover du över?"
           />
           <div>
-            <p className="text-sm text-text-black italic">
+            <span className="text-sm text-text-black italic">
               Boende bokas på egen hand. Uppge Olivia & Simon vid bokning.
-            </p>
+            </span>
+            <span className="ml-1 text-sm text-text-black italic">
+              <Link href="/boende" target="_blank">
+                Mer om boende här.
+              </Link>
+            </span>
           </div>
 
           <div>
