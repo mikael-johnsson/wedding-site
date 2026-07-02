@@ -3,35 +3,56 @@ import CountdownClock from "./components/CountdownClock";
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen py-10">
+    <main className="flex flex-col gap-20 min-h-screen px-10 py-5 md:py-10 lg:px-25 xl:px-35">
       <section className="min-h-screen flex flex-col gap-10">
-        <div className="flex items-center flex-col md:flex-row md:gap-10">
-          <div className=" w-1/2 py-20 mx-auto">
-            <h1 className="text-5xl font-bold text-center">BERNOZZI WEDDING</h1>
-            <p className="text-xl text-center mt-15">10-12 sept 2027</p>
+        <div className="flex items-center flex-col lg:flex-row lg:gap-10 lg:justify-center xl:px-15">
+          <div className="w-[70%] py-20 mx-auto">
+            <h1 className="text-4xl md:text-5xl font-heading text-center">
+              BERNOZZI WEDDING
+            </h1>
+            <p className="text-xl text-center mt-15 mb-30">10-12 sept 2027</p>
+            <CountdownClock />
           </div>
           <Image
-            src="/couples_placeholder.jpg"
+            src="/simon_olivia_puss.jpeg"
             alt="Wedding"
-            width={800}
+            width={500}
             height={600}
           />
         </div>
-        <CountdownClock />
       </section>
-      <section className="mx-auto flex w-[92%] flex-col gap-8 sm:w-11/12 md:w-5/6 lg:w-1/2">
-        <p className="text-base leading-relaxed text-center sm:text-lg">
-          2018 blev vi kära. 2021 fick vi äntligen varann. 2027 ska vi gifta oss
-          och vill att DU ska vara med❤️.
-        </p>
-        <p className="text-base leading-relaxed text-center sm:text-lg">
-          Vi fixar en oförglömlig helg i Småland. Du behöver bara dyka upp i
-          dina finaste, och mest dansvänliga, kläder.
-        </p>
-        <p className="text-base leading-relaxed text-center sm:text-lg">
-          Era underbara barn älskar vi. Men just denna helg får de tillbringa på
-          annan plats.
-        </p>
+      <section className="mx-auto flex w-full flex-col items-center gap-15 sm:w-11/12 xl:w-[65%]">
+        <div className="flex flex-col-reverse items-center justify-between gap-10 w-[85%] lg:flex-row ">
+          <Image
+            src="/simon_olivia_orange.jpeg"
+            alt="Wedding"
+            width={350}
+            height={470}
+          />
+          <p className="text-center sm:text-lg">
+            2018 blev vi kära. 2021 fick vi äntligen varann. 2027 ska vi gifta
+            oss och vill att DU ska vara med❤️
+          </p>
+        </div>
+        <div className="flex flex-col items-center justify-between gap-10 w-[80%] lg:flex-row">
+          <p className="text-center sm:text-lg">
+            Vi fixar en oförglömlig helg i Småland. Du behöver bara dyka upp i
+            dina finaste, och mest dansvänliga, kläder.
+          </p>
+          <Image
+            src="/simon_olivia_hast.jpeg"
+            alt="Wedding"
+            width={350}
+            height={470}
+          />
+        </div>
+        <div className="flex flex-col-reverse items-center justify-between gap-10 w-[80%] lg:flex-row">
+          <Image src="/frances.jpeg" alt="Wedding" width={350} height={470} />
+          <p className="text-center sm:text-lg">
+            Era underbara barn älskar vi. Men just denna helg får de tillbringa
+            på annan plats.
+          </p>
+        </div>
       </section>
     </main>
   );

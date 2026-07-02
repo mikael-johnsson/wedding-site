@@ -3,12 +3,12 @@ import Image from "next/image";
 const ToastPage = () => {
   return (
     <main>
-      <h1 className="text-4xl font-bold text-center mt-10 mb-5">
-        Toast och kyrkvärd
+      <h1 className="text-4xl font-heading text-center mt-10 mb-5">
+        TOAST & KYRKVÄRD
       </h1>
       <div className="mx-auto flex flex-col gap-6 px-4 lg:flex-row lg:justify-center lg:gap-10 lg:px-10">
         <div className="w-full px-4 py-10 lg:w-1/2">
-          <h2 className="text-2xl font-bold text-center mb-10">Toast</h2>
+          <h2 className="text-2xl font-heading text-center mb-10">Toast</h2>
           <div>
             <Image
               src="/toast_placeholder.jpg"
@@ -25,7 +25,7 @@ const ToastPage = () => {
           </div>
         </div>
         <div className="w-full  px-4 py-10 lg:w-1/2">
-          <h2 className="text-2xl font-bold text-center mb-10">Kyrkvärd</h2>
+          <h2 className="text-2xl font-heading text-center mb-10">Kyrkvärd</h2>
           <div>
             <Image
               src="/priest_placeholder_2.jpg"

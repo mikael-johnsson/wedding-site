@@ -49,14 +49,11 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
     <header className="shadow px-4 md:px-12">
       <div className="container mx-auto py-4 md:py-6">
         <div ref={mobileMenuRef} className="md:hidden">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="font-bold text-xl text-text-black">
-              Olivia & Simon
-            </Link>
+          <div className="flex items-center justify-end">
             <button
               type="button"
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="rounded p-2 text-xl font-bold text-text-black"
+              className="text-xl text-text-black"
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
             >
@@ -77,7 +74,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="rounded px-2 py-2 font-bold text-text-black hover:underline"
+                  className="rounded px-2 py-2 text-text-black hover:underline"
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
@@ -86,7 +83,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
               {authUser && (
                 <Link
                   href="/guests"
-                  className="rounded px-2 py-2 font-bold text-text-black hover:underline"
+                  className="rounded px-2 py-2 text-text-black hover:underline"
                   onClick={() => setMenuOpen(false)}
                 >
                   GÄSTLISTAN
@@ -97,7 +94,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
             <div className="testClass mt-4 border-t border-text-black/20 pt-4">
               {authUser ? (
                 <span className="block px-2 py-2 text-text-black">
-                  Du är inloggad som: {authUser.username}!
+                  Inloggad som: {authUser.username}!
                 </span>
               ) : (
                 <Link
@@ -118,7 +115,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded p-3 mx-2 font-bold text-text-black hover:underline"
+                className="rounded p-3 mx-2 text-text-black hover:underline"
               >
                 {link.label}
               </Link>
@@ -126,7 +123,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
             {authUser && (
               <Link
                 href="/guests"
-                className="rounded p-3 mx-2 font-bold text-text-black hover:underline"
+                className="rounded p-3 mx-2 text-text-black hover:underline"
               >
                 GÄSTLISTAN
               </Link>
@@ -135,7 +132,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
 
           {authUser ? (
             <span className="p-1 mx-1 text-text-black">
-              Du är inloggad som: {authUser.username}!
+              Inloggad som: {authUser.username}!
             </span>
           ) : (
             <Link

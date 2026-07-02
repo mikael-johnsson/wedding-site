@@ -19,14 +19,14 @@ const GuestsPage = async () => {
   if (!authUser) {
     return (
       <main className="min-h-screen p-4 py-12sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold mb-4">Gäster</h1>
+        <h1 className="text-4xl font-heading mb-4">Gäster</h1>
         <p className="mb-4">Du måste vara inloggad för att se gästlistan.</p>
       </main>
     );
   }
   return (
     <main className="min-h-screen p-4 py-12sm:px-6 lg:px-8">
-      <h1 className="text-4xl font-bold mb-4">Gäster</h1>
+      <h1 className="text-4xl font-heading mb-4">GÄSTER</h1>
       <p className="mb-4">Totalt antal gäster: {amountOfAttending}</p>
       <p className="mb-4">
         Totalt antal svar (antal inbjudningar): {amountOfOSA}

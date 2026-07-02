@@ -35,12 +35,14 @@ const OSAPage = () => {
     <main className="min-h-screen px-4 py-12 text-text-black sm:px-6 lg:px-8">
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
         <header className="grid gap-4 text-center">
-          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Vänligen svara på inbjudan
+          <h1 className="text-4xl font-heading sm:text-5xl">
+            BRÖLLOPSINBJUDAN
           </h1>
-          <p className="mx-auto max-w-xl text-base leading-7 text-text-black  sm:text-lg">
-            Svara senast 31 maj 2027. Om du tar med en +1 visas extra fält
-            automatiskt.
+          <p className="mx-auto max-w-xl text-text-black sm:text-lg">
+            Svara senast 31 maj 2027.
+          </p>
+          <p className="mx-auto max-w-xl text-text-black sm:text-lg">
+            Om du tar med en +1 visas extra fält automatiskt.
           </p>
         </header>
         <Suspense fallback={null}>

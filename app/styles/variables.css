@@ -1,5 +1,12 @@
 @theme {
   --color-bg-beige: #f5f0ed;
+  --color-bg-pastel-green: #b9fbc0;
   --color-text-black: #46423f;
   --color-accent-green: #757462;
+  --font-heading: "futura", "General Sans", sans-serif;
+}
+
+@font-face {
+  font-family: "futura-medium";
+  src: url("/fonts/FUTURAMEDIUM.TTF") format("truetype");
 }

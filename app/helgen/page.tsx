@@ -3,19 +3,19 @@ import Image from "next/image";
 const WeekendPage = () => {
   return (
     <main className="min-h-screen">
-      <h1 className="text-4xl font-bold text-center mt-10">HELGEN</h1>
-      <div className="container mx-auto flex flex-col gap-4 px-4 py-6 lg:flex-row lg:justify-evenly">
+      <h1 className="text-4xl font-heading text-center mt-10">HELGEN</h1>
+      <div className="container mx-auto mt-8 flex flex-col gap-4 px-4 py-6 lg:flex-row lg:justify-center lg:gap-8">
         {/* FREDAG */}
-        <div className="w-full rounded border p-6 lg:w-[30%]">
+        <div className="w-full rounded border p-6 lg:w-[30%] lg:px-4">
           <Image
-            src="/herrgård-sketchad.png"
+            src="/toftaholm_2.jpeg"
             alt="Wedding"
             className="object-contain mx-auto"
-            width={600}
-            height={900}
+            width={500}
+            height={800}
           />
-          <h2 className="text-2xl font-extrabold text-center my-10">FREDAG</h2>
-          <p className="text-md font-bold text-center ">
+          <h2 className="text-2xl font-heading text-center my-10">FREDAG</h2>
+          <p className="text-md font-heading text-center ">
             Plats: Toftaholm Herrgård
           </p>
           <ul className="list-none list-inside mt-15 flex flex-col gap-4 items-center">
@@ -27,16 +27,16 @@ const WeekendPage = () => {
         </div>
 
         {/* LÖRDAG */}
-        <div className="w-full rounded border p-6 lg:w-[30%]">
+        <div className="w-full rounded border p-6 lg:w-[30%] lg:px-4">
           <Image
             src="/varnamo_kyrka.jpg"
             alt="Wedding"
             className="object-contain mx-auto"
-            width={600}
-            height={900}
+            width={500}
+            height={800}
           />
-          <h2 className="text-2xl font-extrabold text-center my-10">LÖRDAG</h2>
-          <p className="text-md font-bold text-center ">
+          <h2 className="text-2xl font-heading text-center my-10">LÖRDAG</h2>
+          <p className="text-md font-heading text-center ">
             Plats: Värnamo Kyrka / Toftaholm Herrgård
           </p>
 
@@ -48,16 +48,16 @@ const WeekendPage = () => {
         </div>
 
         {/* SÖNDAG */}
-        <div className="w-full rounded border p-6 lg:w-[30%]">
+        <div className="w-full rounded border p-6 lg:w-[30%] lg:px-4">
           <Image
-            src="/herrgård-sketchad.png"
+            src="/toftaholm_1.jpeg"
             alt="Wedding"
             className="object-contain mx-auto"
-            width={600}
-            height={900}
+            width={500}
+            height={800}
           />
-          <h2 className="text-2xl font-extrabold text-center my-10">SÖNDAG</h2>
-          <p className="text-md font-bold text-center ">
+          <h2 className="text-2xl font-heading text-center my-10">SÖNDAG</h2>
+          <p className="text-md font-heading text-center">
             Plats: Toftaholm Herrgård
           </p>
 
