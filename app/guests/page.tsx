@@ -26,14 +26,15 @@ const GuestsPage = async () => {
   }
   return (
     <main className="min-h-screen p-4 py-12sm:px-6 lg:px-8">
-      <h1 className="text-4xl font-heading mb-4">GÄSTER</h1>
-      <p className="mb-4">Totalt antal gäster: {amountOfAttending}</p>
-      <p className="mb-4">
-        Totalt antal svar (antal inbjudningar): {amountOfOSA}
-      </p>
-      <p className="mb-4">
-        Totalt antal som tackat nej (antal inbjudningar): {amountOfNotAttending}
-      </p>
+      <h1 className="text-4xl font-heading mb-4 text-center">GÄSTER</h1>
+      <div className="flex flex-col justify-center mb-8 gap-1">
+        <p>Totalt antal gäster: {amountOfAttending}</p>
+        <p>Totalt antal svar (antal inbjudningar): {amountOfOSA}</p>
+        <p>
+          Totalt antal som tackat nej (antal inbjudningar):{" "}
+          {amountOfNotAttending}
+        </p>
+      </div>
       <ul className="space-y-4">
         {!guests || guests.length === 0 ? (
           <li>
