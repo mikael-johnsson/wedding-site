@@ -17,8 +17,8 @@ const GuestCard = (guest: Guest) => {
         {cardOpen ? "Stäng" : "Öppna"}
       </button>
       {!cardOpen && (
-        <div className="flex flex-col justify-evenly items-start  gap-3 md:flex-row">
-          <div>
+        <div className="flex flex-col items-start gap-3 md:flex-row sm:justify-start">
+          <div className="basis-[40%]">
             <p>
               <strong>Huvudgäst:</strong> {guest.primaryGuest.name}
             </p>
@@ -27,16 +27,18 @@ const GuestCard = (guest: Guest) => {
               {guest.primaryGuest.attending ? "Ja" : "Nej"}
             </p>
           </div>
-          <div>
-            <p>
-              <strong>+1 Namn:</strong>{" "}
-              {guest.plusOne ? guest.plusOne.name : "Ingen"}
-            </p>
-            <p>
-              <strong>+1 Närvaro:</strong>{" "}
-              {guest.plusOne?.attending ? "Ja" : "Nej"}
-            </p>
-          </div>
+          {guest.numberOfGuests > 1 && (
+            <div>
+              <p>
+                <strong>+1 Namn:</strong>{" "}
+                {guest.plusOne ? guest.plusOne.name : "Ingen"}
+              </p>
+              <p>
+                <strong>+1 Närvaro:</strong>{" "}
+                {guest.plusOne?.attending ? "Ja" : "Nej"}
+              </p>
+            </div>
+          )}
         </div>
       )}
 
