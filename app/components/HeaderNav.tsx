@@ -94,7 +94,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
             <div className="testClass mt-4 border-t border-text-black/20 pt-4">
               {authUser ? (
                 <span className="block px-2 py-2 text-text-black">
-                  Inloggad som: {authUser.username}!
+                  Inloggad som: {authUser.username}
                 </span>
               ) : (
                 <Link
@@ -132,7 +132,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
 
           {authUser ? (
             <span className="p-1 mx-1 text-text-black">
-              Inloggad som: {authUser.username}!
+              Inloggad som: {authUser.username}
             </span>
           ) : (
             <Link

@@ -10,7 +10,7 @@ export default function Home() {
             <h1 className="text-4xl md:text-5xl font-heading text-center">
               BERNOZZI WEDDING
             </h1>
-            <p className="text-xl text-center mt-15 mb-30">10-12 sept 2027</p>
+            <p className="text-xl text-center mt-15 mb-30">10 - 12 sept 2027</p>
             <CountdownClock />
           </div>
           <Image
