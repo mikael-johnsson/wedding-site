@@ -10,7 +10,7 @@ const WeekendPage = () => {
           <Image
             src="/toftaholm_2.jpeg"
             alt="Wedding"
-            className="object-contain mx-auto"
+            className="object-contain mx-auto rounded-lg shadow-xl"
             width={500}
             height={800}
           />
@@ -31,7 +31,7 @@ const WeekendPage = () => {
           <Image
             src="/varnamo_kyrka.jpg"
             alt="Wedding"
-            className="object-contain mx-auto"
+            className="object-contain mx-auto rounded-lg shadow-xl"
             width={500}
             height={800}
           />
@@ -52,7 +52,7 @@ const WeekendPage = () => {
           <Image
             src="/toftaholm_1.jpeg"
             alt="Wedding"
-            className="object-contain mx-auto"
+            className="object-contain mx-auto rounded-lg shadow-xl"
             width={500}
             height={800}
           />

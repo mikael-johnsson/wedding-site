@@ -18,6 +18,7 @@ export default function Home() {
             alt="Wedding"
             width={500}
             height={600}
+            className="rounded-lg shadow-xl"
           />
         </div>
       </section>
@@ -28,6 +29,7 @@ export default function Home() {
             alt="Wedding"
             width={350}
             height={470}
+            className="rounded-lg shadow-xl"
           />
           <p className="text-center sm:text-lg">
             2018 blev vi kära. 2021 fick vi äntligen varann. 2027 ska vi gifta
@@ -44,10 +46,17 @@ export default function Home() {
             alt="Wedding"
             width={350}
             height={470}
+            className="rounded-lg shadow-xl"
           />
         </div>
         <div className="flex flex-col-reverse items-center justify-between gap-10 w-[80%] lg:flex-row">
-          <Image src="/frances.jpeg" alt="Wedding" width={350} height={470} />
+          <Image
+            src="/frances.jpeg"
+            alt="Wedding"
+            width={350}
+            height={470}
+            className="rounded-lg shadow-xl"
+          />
           <p className="text-center sm:text-lg">
             Era underbara barn älskar vi. Men just denna helg får de tillbringa
             på annan plats.

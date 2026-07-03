@@ -14,7 +14,7 @@ const GiftsPage = () => {
         alt="Wedding"
         width={400}
         height={500}
-        className="mx-auto my-10 shadow-lg"
+        className="mx-auto my-10 rounded-lg shadow-xl"
       />
     </main>
   );

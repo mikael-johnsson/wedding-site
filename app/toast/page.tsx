@@ -15,7 +15,7 @@ const ToastPage = () => {
               alt="Toast"
               width={400}
               height={300}
-              className="mx-auto mt-10"
+              className="mx-auto mt-10 rounded-lg shadow-xl"
             />
             <div className="mt-4 flex flex-col gap-4 mx-auto text-center">
               <p>Här är info om toastpersonen!</p>
@@ -32,7 +32,7 @@ const ToastPage = () => {
               alt="Toast"
               width={400}
               height={300}
-              className="mx-auto mt-10"
+              className="mx-auto mt-10 rounded-lg shadow-xl"
             />
             <div className="mt-4 flex flex-col gap-4 mx-auto text-center">
               <p>Här är info om kyrkvärden!</p>

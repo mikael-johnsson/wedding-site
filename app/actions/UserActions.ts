@@ -63,7 +63,7 @@ export const loginUser = async (formData: FormData) => {
     secure: true,
     sameSite: "lax",
     path: "/",
-    maxAge: 60 * 60,
+    maxAge: 60 * 60 * 24,
   });
 
   redirect("/");
