@@ -1,27 +1,45 @@
 import GuestModel, { Guest } from "../models/Guest";
-import DeleteGuestForm from "../components/DeleteGuestForm";
 import { checkAuth } from "../actions/UserActions";
-import { formatDays } from "../lib/formatDays";
 import GuestCard from "../components/GuestCard";
 import { overNightStays } from "../lib/overnightStays";
 import { weddingDaysAttendees } from "../lib/weddingDaysAttendees";
 
-const GuestsPage = async () => {
+type GuestsPageProps = {
+  searchParams: Promise<{ attending: string }>;
+};
+
+const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
   const authUser = await checkAuth();
-  const guests: Guest[] = await GuestModel.find().lean();
-  const amountOfAttending = guests.reduce(
+  const { attending } = await searchParams;
+  const filterAttending =
+    attending === "attending"
+      ? true
+      : attending === "not-attending"
+        ? false
+        : undefined;
+
+  const filter =
+    filterAttending === undefined
+      ? {}
+      : { "primaryGuest.attending": filterAttending };
+
+  const guests: Guest[] = await GuestModel.find(filter).lean(); // Fetch guests based on the filter
+
+  const numberGuests: Guest[] = await GuestModel.find().lean(); // Fetch all guests to calculate totals
+
+  const amountOfAttending = numberGuests.reduce(
     (total, guest) => total + guest.numberOfGuests,
     0,
   );
-  const amountOfOSA = guests.length;
-  const amountOfNotAttending = guests.reduce(
+  const amountOfOSA = numberGuests.length;
+  const amountOfNotAttending = numberGuests.reduce(
     (total, guest) => total + (guest.primaryGuest.attending ? 0 : 1),
     0,
   );
 
-  const [fridayOvernights, saturdayOvernights] = overNightStays(guests);
+  const [fridayOvernights, saturdayOvernights] = overNightStays(numberGuests);
   const [fridayAttendees, saturdayAttendees, sundayAttendees] =
-    weddingDaysAttendees(guests);
+    weddingDaysAttendees(numberGuests);
 
   if (!authUser) {
     return (
@@ -46,6 +64,32 @@ const GuestsPage = async () => {
         <p>Antal gäster fredag: {fridayAttendees}</p>
         <p>Antal gäster lördag: {saturdayAttendees}</p>
         <p>Antal gäster söndag: {sundayAttendees}</p>
+      </div>
+      <div className="flex gap-2 mb-4">
+        <form className="flex gap-4 mb-2">
+          <div className="flex gap-1 items-center">
+            <label htmlFor="attending">Närvarande</label>
+            <select className="border rounded p-1" name="attending">
+              <option value="everyone">Alla</option>
+              <option value="attending">Närvarande</option>
+              <option value="not-attending">Icke närvarande</option>
+            </select>
+          </div>
+          <button
+            className=" px-2 py-1 rounded border hover:bg-teal-900 hover:text-white"
+            type="submit"
+          >
+            Filtrera
+          </button>
+        </form>
+        <form action={"/guests"} method="GET">
+          <button
+            className="px-2 py-1 rounded border hover:bg-teal-900 hover:text-white"
+            type="submit"
+          >
+            Rensa filter
+          </button>
+        </form>
       </div>
       <ul className="space-y-4">
         {!guests || guests.length === 0 ? (
