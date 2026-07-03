@@ -41,7 +41,16 @@ const GuestsPage = async () => {
             <p>Inga gäster hittades.</p>
           </li>
         ) : (
-          guests.map((guest) => <GuestCard key={guest._id} {...guest} />)
+          guests.map((guest) => (
+            <GuestCard
+              key={guest._id}
+              primaryGuest={guest.primaryGuest}
+              plusOne={guest.plusOne}
+              numberOfGuests={guest.numberOfGuests}
+              rsvpSubmittedAt={guest.rsvpSubmittedAt}
+              _id={guest._id.toString()}
+            />
+          ))
         )}
       </ul>
     </main>

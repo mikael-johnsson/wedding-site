@@ -3,7 +3,7 @@ import { model, models, Schema } from "mongoose";
 export type WeddingDay = "friday" | "saturday" | "sunday";
 export type OvernightDay = "friday" | "saturday";
 
-type PersonInfo = {
+export type PersonInfo = {
   name: string;
   attending: boolean;
   allergies?: string;

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { UserDTO } from "../models/User";
+import { usePathname } from "next/navigation";
 
 type HeaderNavProps = {
   authUser: UserDTO | null;
@@ -11,6 +12,7 @@ type HeaderNavProps = {
 const HeaderNav = ({ authUser }: HeaderNavProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname();
 
   const links = [
     { href: "/", label: "HEM" },
@@ -74,7 +76,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="rounded px-2 py-2 text-text-black hover:underline"
+                  className={`rounded px-2 py-2 text-text-black hover:underline ${pathname === link.href ? "underline" : ""} `}
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
@@ -83,7 +85,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
               {authUser && (
                 <Link
                   href="/guests"
-                  className="rounded px-2 py-2 text-text-black hover:underline"
+                  className={`rounded px-2 py-2 text-text-black hover:underline ${pathname === "/guests" ? "underline" : ""} `}
                   onClick={() => setMenuOpen(false)}
                 >
                   GÄSTLISTAN
@@ -115,7 +117,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded p-3 mx-2 text-text-black hover:underline"
+                className={`rounded p-3 mx-2 text-text-black hover:underline ${pathname === link.href ? "underline" : ""}`}
               >
                 {link.label}
               </Link>
@@ -123,7 +125,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
             {authUser && (
               <Link
                 href="/guests"
-                className="rounded p-3 mx-2 text-text-black hover:underline"
+                className={`rounded p-3 mx-2 text-text-black hover:underline ${pathname === "/guests" ? "underline" : ""}`}
               >
                 GÄSTLISTAN
               </Link>
