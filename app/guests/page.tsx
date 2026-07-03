@@ -3,6 +3,8 @@ import DeleteGuestForm from "../components/DeleteGuestForm";
 import { checkAuth } from "../actions/UserActions";
 import { formatDays } from "../lib/formatDays";
 import GuestCard from "../components/GuestCard";
+import { overNightStays } from "../lib/overnightStays";
+import { weddingDaysAttendees } from "../lib/weddingDaysAttendees";
 
 const GuestsPage = async () => {
   const authUser = await checkAuth();
@@ -16,6 +18,11 @@ const GuestsPage = async () => {
     (total, guest) => total + (guest.primaryGuest.attending ? 0 : 1),
     0,
   );
+
+  const [fridayOvernights, saturdayOvernights] = overNightStays(guests);
+  const [fridayAttendees, saturdayAttendees, sundayAttendees] =
+    weddingDaysAttendees(guests);
+
   if (!authUser) {
     return (
       <main className="min-h-screen p-4 py-12sm:px-6 lg:px-8">
@@ -34,6 +41,11 @@ const GuestsPage = async () => {
           Totalt antal som tackat nej (antal inbjudningar):{" "}
           {amountOfNotAttending}
         </p>
+        <p>Antal övernattningar fredag: {fridayOvernights}</p>
+        <p>Antal övernattningar lördag: {saturdayOvernights}</p>
+        <p>Antal gäster fredag: {fridayAttendees}</p>
+        <p>Antal gäster lördag: {saturdayAttendees}</p>
+        <p>Antal gäster söndag: {sundayAttendees}</p>
       </div>
       <ul className="space-y-4">
         {!guests || guests.length === 0 ? (
