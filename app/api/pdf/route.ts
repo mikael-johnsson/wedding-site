@@ -1,12 +1,14 @@
-import type { Guest } from "@/app/models/Guest";
+import { formatDays } from "@/app/lib/formatDays";
+import type { Guest, GuestDTO } from "@/app/models/Guest";
 import { NextResponse } from "next/server";
+
 // Load pdfkit at runtime to avoid Turbopack replacing __dirname and breaking AFM file paths
 const pdfkit: any = eval("require('pdfkit')");
 
 export const POST = async (request: Request) => {
   try {
-    console.log("Inside POST");
-    const { guests }: { guests: Guest[] } = await request.json();
+    const { guests, filters }: { guests: GuestDTO[]; filters: string[] } =
+      await request.json();
 
     const doc = new pdfkit({ size: "A4", margin: 50 });
 
@@ -17,28 +19,54 @@ export const POST = async (request: Request) => {
       doc.on("error", (err: Error) => reject(err));
     });
 
-    doc.fontSize(20).text("Gästlista", { align: "center" });
+    doc.fontSize(20).text("Gästlista Bernozzi Wedding", { align: "center" });
     doc.moveDown();
 
     const formatDate = (d?: Date | string) => {
       if (!d) return "-";
       try {
-        return new Date(d).toLocaleString();
+        return new Date(d).toLocaleString("sv-SE", {
+          dateStyle: "medium",
+          timeStyle: "short",
+        });
       } catch {
         return String(d);
       }
     };
 
-    const formatArray = (arr?: string[]) =>
-      arr && arr.length ? arr.join(", ") : "-";
+    const normalizedFilters = filters.map((f) => {
+      switch (f) {
+        case "attending":
+          return "Närvarande";
+        case "not-attending":
+          return "Inte närvarande";
+        default:
+          return f;
+      }
+    });
 
-    console.log("About to start iterating guests");
+    doc.fontSize(10).text(`Gästlista skapad: ${formatDate(new Date())}`, {
+      align: "right",
+      oblique: true,
+    });
+
+    doc.fontSize(10).text(`Filter: ${normalizedFilters.join(", ") || "-"}`, {
+      align: "right",
+      oblique: true,
+    });
+    doc.moveDown();
 
     guests.forEach((guest, i) => {
       const p = guest.primaryGuest;
 
-      doc.fontSize(14).text(`${i + 1}. ${p.name}`, { underline: true });
+      doc
+        .fontSize(14)
+        .text(
+          `${i + 1}. ${p.name} ${guest.plusOne ? `& ${guest.plusOne.name}` : ""}`,
+          { underline: true },
+        );
 
+      doc.fontSize(12).text(`Huvudgäst: ${p.name}`, { indent: 10 });
       doc
         .fontSize(12)
         .text(`Närvarande: ${p.attending ? "Ja" : "Nej"}`, { indent: 10 });
@@ -50,12 +78,12 @@ export const POST = async (request: Request) => {
       doc.fontSize(12).text(`Anteckningar: ${p.notes || "-"}`, { indent: 10 });
       doc
         .fontSize(12)
-        .text(`Dagar närvarande: ${formatArray(p.daysAttending)}`, {
+        .text(`Dagar närvarande: ${formatDays(p.daysAttending)}`, {
           indent: 10,
         });
       doc
         .fontSize(12)
-        .text(`Dagar övernattning: ${formatArray(p.daysOvernighting)}`, {
+        .text(`Dagar övernattning: ${formatDays(p.daysOvernighting)}`, {
           indent: 10,
         });
       doc.fontSize(12).text(`Transport: ${p.transport || "-"}`, { indent: 10 });
@@ -65,7 +93,7 @@ export const POST = async (request: Request) => {
         doc.moveDown(0.25);
         doc
           .fontSize(13)
-          .text(`Plus One: ${q.name}`, { indent: 10, underline: false });
+          .text(`Plus one: ${q.name}`, { indent: 10, underline: false });
         doc
           .fontSize(12)
           .text(`Närvarande: ${q.attending ? "Ja" : "Nej"}`, { indent: 20 });
@@ -80,12 +108,12 @@ export const POST = async (request: Request) => {
           .text(`Anteckningar: ${q.notes || "-"}`, { indent: 20 });
         doc
           .fontSize(12)
-          .text(`Dagar närvarande: ${formatArray(q.daysAttending)}`, {
+          .text(`Dagar närvarande: ${formatDays(q.daysAttending)}`, {
             indent: 20,
           });
         doc
           .fontSize(12)
-          .text(`Dagar övernattning: ${formatArray(q.daysOvernighting)}`, {
+          .text(`Dagar övernattning: ${formatDays(q.daysOvernighting)}`, {
             indent: 20,
           });
         doc
@@ -99,20 +127,13 @@ export const POST = async (request: Request) => {
         .text(`Antal gäster: ${guest.numberOfGuests ?? "-"}`, { indent: 10 });
       doc
         .fontSize(11)
-        .text(`RSVP skickat: ${formatDate(guest.rsvpSubmittedAt)}`, {
+        .text(`Svar skickat: ${formatDate(guest.rsvpSubmittedAt)}`, {
           indent: 10,
         });
-      doc
-        .fontSize(11)
-        .text(`Uppdaterad: ${formatDate(guest.updatedAt)}`, { indent: 10 });
-      doc.fontSize(10).text(`ID: ${guest._id}`, { indent: 10 });
-
       doc.moveDown();
     });
 
     doc.end();
-
-    console.log("Done iterating guests");
 
     const pdfBuffer = await pdfPromise;
     const pdfUint8 = new Uint8Array(pdfBuffer);

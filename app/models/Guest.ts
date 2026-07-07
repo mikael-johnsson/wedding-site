@@ -23,6 +23,24 @@ export type Guest = {
   _id: string;
 };
 
+export type GuestDTO = {
+  primaryGuest: PersonInfo;
+  plusOne?: PersonInfo;
+  rsvpSubmittedAt?: Date;
+  updatedAt?: Date;
+  numberOfGuests: number;
+};
+
+export const convertGuestToDTO = (guest: Guest): GuestDTO => {
+  return {
+    primaryGuest: guest.primaryGuest,
+    plusOne: guest.plusOne,
+    rsvpSubmittedAt: guest.rsvpSubmittedAt,
+    updatedAt: guest.updatedAt,
+    numberOfGuests: guest.numberOfGuests,
+  };
+};
+
 const personInfoSchema = new Schema<PersonInfo>(
   {
     name: { type: String, required: true, trim: true },

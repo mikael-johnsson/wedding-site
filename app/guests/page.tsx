@@ -1,4 +1,4 @@
-import GuestModel, { Guest } from "../models/Guest";
+import GuestModel, { convertGuestToDTO, Guest } from "../models/Guest";
 import { checkAuth } from "../actions/UserActions";
 import GuestCard from "../components/GuestCard";
 import { overNightStays } from "../lib/overnightStays";
@@ -12,6 +12,10 @@ type GuestsPageProps = {
 const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
   const authUser = await checkAuth();
   const { attending } = await searchParams;
+  const filtersProps = [];
+  if (attending) {
+    filtersProps.push(attending);
+  }
   const filterAttending =
     attending === "attending"
       ? true
@@ -25,6 +29,7 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
       : { "primaryGuest.attending": filterAttending };
 
   const guests: Guest[] = await GuestModel.find(filter).lean(); // Fetch guests based on the filter
+  const guestDTOs = guests.map((guest) => convertGuestToDTO(guest)); // Convert guests to DTOs if needed
 
   const numberGuests: Guest[] = await GuestModel.find().lean(); // Fetch all guests to calculate totals
 
@@ -91,7 +96,7 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
             Rensa filter
           </button>
         </form>
-        <PDFButton guests={guests} />
+        <PDFButton guests={guestDTOs} filters={filtersProps} />
       </div>
       <ul className="space-y-4">
         {!guests || guests.length === 0 ? (
