@@ -9,7 +9,7 @@ export const POST = async (request: Request) => {
     const { guests, filters }: { guests: GuestDTO[]; filters: string[] } =
       await request.json();
 
-    const { default: PDFDocument } = await import("pdfkit");
+    const PDFDocument = require("pdfkit");
 
     const doc = new PDFDocument({ size: "A4", margin: 50 });
 
