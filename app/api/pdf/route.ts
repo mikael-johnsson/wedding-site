@@ -29,6 +29,7 @@ export const POST = async (request: Request) => {
         return new Date(d).toLocaleString("sv-SE", {
           dateStyle: "medium",
           timeStyle: "short",
+          timeZone: "Europe/Stockholm",
         });
       } catch {
         return String(d);
