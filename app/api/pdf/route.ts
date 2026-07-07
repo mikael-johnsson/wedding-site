@@ -1,18 +1,17 @@
 import { formatDays } from "@/app/lib/formatDays";
-import type { Guest, GuestDTO } from "@/app/models/Guest";
+import type { GuestDTO } from "@/app/models/Guest";
 import { NextResponse } from "next/server";
-import pdfkit from "pdfkit";
 
-// Load pdfkit at runtime to avoid Turbopack replacing __dirname and breaking AFM file paths
-// required to work locally
-// const pdfkit: any = eval("require('pdfkit')");
+export const runtime = "nodejs";
 
 export const POST = async (request: Request) => {
   try {
     const { guests, filters }: { guests: GuestDTO[]; filters: string[] } =
       await request.json();
 
-    const doc = new pdfkit({ size: "A4", margin: 50 });
+    const { default: PDFDocument } = await import("pdfkit");
+
+    const doc = new PDFDocument({ size: "A4", margin: 50 });
 
     const chunks: Buffer[] = [];
     const pdfPromise = new Promise<Buffer>((resolve, reject) => {
