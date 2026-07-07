@@ -4,6 +4,7 @@ import GuestCard from "../components/GuestCard";
 import { overNightStays } from "../lib/overnightStays";
 import { weddingDaysAttendees } from "../lib/weddingDaysAttendees";
 import PDFButton from "../components/PDFButton";
+import { AttendingStats } from "../models/AttendingStats";
 
 type GuestsPageProps = {
   searchParams: Promise<{ attending: string }>;
@@ -46,6 +47,17 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
   const [fridayOvernights, saturdayOvernights] = overNightStays(numberGuests);
   const [fridayAttendees, saturdayAttendees, sundayAttendees] =
     weddingDaysAttendees(numberGuests);
+
+  const attendingStats: AttendingStats = {
+    amountOfAttending,
+    amountOfOSA,
+    amountOfNotAttending,
+    fridayOvernights,
+    saturdayOvernights,
+    fridayAttendees,
+    saturdayAttendees,
+    sundayAttendees,
+  };
 
   if (!authUser) {
     return (
@@ -96,7 +108,11 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
             Rensa filter
           </button>
         </form>
-        <PDFButton guests={guestDTOs} filters={filtersProps} />
+        <PDFButton
+          guests={guestDTOs}
+          filters={filtersProps}
+          attendingStats={attendingStats}
+        />
       </div>
       <ul className="space-y-4">
         {!guests || guests.length === 0 ? (

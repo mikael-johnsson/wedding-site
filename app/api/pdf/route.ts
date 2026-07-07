@@ -1,4 +1,5 @@
 import { formatDays } from "@/app/lib/formatDays";
+import { AttendingStats } from "@/app/models/AttendingStats";
 import type { GuestDTO } from "@/app/models/Guest";
 import { NextResponse } from "next/server";
 
@@ -6,8 +7,15 @@ export const runtime = "nodejs";
 
 export const POST = async (request: Request) => {
   try {
-    const { guests, filters }: { guests: GuestDTO[]; filters: string[] } =
-      await request.json();
+    const {
+      guests,
+      filters,
+      attendingStats,
+    }: {
+      guests: GuestDTO[];
+      filters: string[];
+      attendingStats: AttendingStats;
+    } = await request.json();
 
     const PDFDocument = require("pdfkit");
 
@@ -56,6 +64,38 @@ export const POST = async (request: Request) => {
       align: "right",
       oblique: true,
     });
+    doc.moveDown();
+
+    doc
+      .fontSize(10)
+      .text(`Totalt antal gäster: ${attendingStats.amountOfAttending}`);
+    doc
+      .fontSize(10)
+      .text(
+        `Totalt antal svar (antal inbjudningar): ${attendingStats.amountOfOSA}`,
+      );
+    doc
+      .fontSize(10)
+      .text(
+        `Totalt antal nej (antal inbjudningar): ${attendingStats.amountOfNotAttending}`,
+      );
+    doc
+      .fontSize(10)
+      .text(`Antal övernattningar fredag: ${attendingStats.fridayOvernights}`);
+    doc
+      .fontSize(10)
+      .text(
+        `Antal övernattningar lördag: ${attendingStats.saturdayOvernights}`,
+      );
+    doc
+      .fontSize(10)
+      .text(`Antal gäster fredag: ${attendingStats.fridayAttendees}`);
+    doc
+      .fontSize(10)
+      .text(`Antal gäster lördag: ${attendingStats.saturdayAttendees}`);
+    doc
+      .fontSize(10)
+      .text(`Antal gäster söndag: ${attendingStats.sundayAttendees}`);
     doc.moveDown();
 
     guests.forEach((guest, i) => {

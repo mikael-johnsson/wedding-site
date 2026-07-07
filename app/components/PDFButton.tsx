@@ -2,13 +2,15 @@
 
 import { useState } from "react";
 import type { GuestDTO } from "../models/Guest";
+import { AttendingStats } from "../models/AttendingStats";
 
 type PDFButtonProps = {
   guests: GuestDTO[];
   filters: string[];
+  attendingStats: AttendingStats;
 };
 
-const PDFButton = ({ guests, filters }: PDFButtonProps) => {
+const PDFButton = ({ guests, filters, attendingStats }: PDFButtonProps) => {
   const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
@@ -17,7 +19,7 @@ const PDFButton = ({ guests, filters }: PDFButtonProps) => {
       const res = await fetch("/api/pdf", {
         headers: { "Content-Type": "application/json" },
         method: "POST",
-        body: JSON.stringify({ guests, filters }),
+        body: JSON.stringify({ guests, filters, attendingStats }),
       });
 
       if (!res.ok) throw new Error("Något gick fel vid generering av PDF");
