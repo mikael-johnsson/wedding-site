@@ -1,9 +1,11 @@
 import { formatDays } from "@/app/lib/formatDays";
 import type { Guest, GuestDTO } from "@/app/models/Guest";
 import { NextResponse } from "next/server";
+import pdfkit from "pdfkit";
 
 // Load pdfkit at runtime to avoid Turbopack replacing __dirname and breaking AFM file paths
-const pdfkit: any = eval("require('pdfkit')");
+// required to work locally
+// const pdfkit: any = eval("require('pdfkit')");
 
 export const POST = async (request: Request) => {
   try {
