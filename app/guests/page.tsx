@@ -3,6 +3,7 @@ import { checkAuth } from "../actions/UserActions";
 import GuestCard from "../components/GuestCard";
 import { overNightStays } from "../lib/overnightStays";
 import { weddingDaysAttendees } from "../lib/weddingDaysAttendees";
+import PDFButton from "../components/PDFButton";
 
 type GuestsPageProps = {
   searchParams: Promise<{ attending: string }>;
@@ -76,7 +77,7 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
             </select>
           </div>
           <button
-            className=" px-2 py-1 rounded border hover:bg-teal-900 hover:text-white"
+            className="px-2 py-1 rounded border hover:bg-teal-900 hover:text-white"
             type="submit"
           >
             Filtrera
@@ -90,6 +91,7 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
             Rensa filter
           </button>
         </form>
+        <PDFButton guests={guests} />
       </div>
       <ul className="space-y-4">
         {!guests || guests.length === 0 ? (

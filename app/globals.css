@@ -4,5 +4,5 @@
 body {
   background-color: var(--color-bg-pastel-green);
   color: var(--color-text-black);
-  font-family: "futura-medium", serif;
+  /* font-family: "futura-medium", serif; */
 }
