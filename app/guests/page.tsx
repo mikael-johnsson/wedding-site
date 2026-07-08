@@ -5,14 +5,15 @@ import { overNightStays } from "../lib/overnightStays";
 import { weddingDaysAttendees } from "../lib/weddingDaysAttendees";
 import PDFButton from "../components/PDFButton";
 import { AttendingStats } from "../models/AttendingStats";
+import OpenAllCardsButton from "../components/OpenAllCardsButton";
 
 type GuestsPageProps = {
-  searchParams: Promise<{ attending: string }>;
+  searchParams: Promise<{ attending: string; openAll: string }>;
 };
 
 const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
   const authUser = await checkAuth();
-  const { attending } = await searchParams;
+  const { attending, openAll = "true" } = await searchParams;
   const filtersProps = [];
   if (attending) {
     filtersProps.push(attending);
@@ -28,6 +29,8 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
     filterAttending === undefined
       ? {}
       : { "primaryGuest.attending": filterAttending };
+
+  const openAllCards = openAll === "false" ? false : true;
 
   const guests: Guest[] = await GuestModel.find(filter).lean(); // Fetch guests based on the filter
   const guestDTOs = guests.map((guest) => convertGuestToDTO(guest)); // Convert guests to DTOs if needed
@@ -83,36 +86,41 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
         <p>Antal gäster lördag: {saturdayAttendees}</p>
         <p>Antal gäster söndag: {sundayAttendees}</p>
       </div>
-      <div className="flex gap-2 mb-4">
-        <form className="flex gap-4 mb-2">
-          <div className="flex gap-1 items-center">
-            <label htmlFor="attending">Närvarande</label>
-            <select className="border rounded p-1" name="attending">
-              <option value="everyone">Alla</option>
-              <option value="attending">Närvarande</option>
-              <option value="not-attending">Icke närvarande</option>
-            </select>
-          </div>
-          <button
-            className="px-2 py-1 rounded border hover:bg-teal-900 hover:text-white"
-            type="submit"
-          >
-            Filtrera
-          </button>
-        </form>
-        <form action={"/guests"} method="GET">
-          <button
-            className="px-2 py-1 rounded border hover:bg-teal-900 hover:text-white"
-            type="submit"
-          >
-            Rensa filter
-          </button>
-        </form>
-        <PDFButton
-          guests={guestDTOs}
-          filters={filtersProps}
-          attendingStats={attendingStats}
-        />
+      <div className="flex justify-between mb-4">
+        <div className="flex flex-col gap-2">
+          <form className="flex gap-4 mb-2">
+            <div className="flex gap-1 items-center">
+              <label htmlFor="attending">Närvarande</label>
+              <select className="border rounded p-1" name="attending">
+                <option value="everyone">Alla</option>
+                <option value="attending">Närvarande</option>
+                <option value="not-attending">Icke närvarande</option>
+              </select>
+            </div>
+            <button
+              className="px-2 py-1 rounded border hover:bg-teal-900 hover:text-white"
+              type="submit"
+            >
+              Filtrera
+            </button>
+          </form>
+          <form action={"/guests"} method="GET" className="flex gap-4">
+            <button
+              className="px-2 py-1 rounded border hover:bg-teal-900 hover:text-white"
+              type="submit"
+            >
+              Rensa filter
+            </button>
+            <PDFButton
+              guests={guestDTOs}
+              filters={filtersProps}
+              attendingStats={attendingStats}
+            />
+          </form>
+        </div>
+        <div>
+          <OpenAllCardsButton isOpen={openAllCards} />
+        </div>
       </div>
       <ul className="space-y-4">
         {!guests || guests.length === 0 ? (
@@ -122,6 +130,7 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
         ) : (
           guests.map((guest) => (
             <GuestCard
+              defaultOpen={openAllCards}
               key={guest._id}
               primaryGuest={guest.primaryGuest}
               plusOne={guest.plusOne}

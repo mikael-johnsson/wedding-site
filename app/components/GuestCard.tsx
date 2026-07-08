@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { formatDays } from "../lib/formatDays";
 import { Guest, PersonInfo } from "../models/Guest";
 import DeleteGuestForm from "./DeleteGuestForm";
 
 type GuestCardProps = {
+  defaultOpen?: boolean;
   primaryGuest: PersonInfo;
   plusOne?: PersonInfo;
   numberOfGuests: number;
@@ -14,13 +15,18 @@ type GuestCardProps = {
 };
 
 const GuestCard = ({
+  defaultOpen,
   primaryGuest,
   plusOne,
   numberOfGuests,
   rsvpSubmittedAt,
   _id,
 }: GuestCardProps) => {
-  const [cardOpen, setCardOpen] = useState(false);
+  const [cardOpen, setCardOpen] = useState(defaultOpen);
+
+  useEffect(() => {
+    setCardOpen(defaultOpen);
+  }, [defaultOpen]);
 
   return (
     <li key={_id} className="border p-4 rounded-lg ">

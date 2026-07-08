@@ -46,6 +46,7 @@ const PDFButton = ({ guests, filters, attendingStats }: PDFButtonProps) => {
       className="px-2 py-1 h-fit rounded border hover:bg-teal-900 hover:text-white"
       onClick={handleClick}
       disabled={loading}
+      type="reset"
     >
       {loading ? "Genererar..." : "Ladda ner PDF"}
     </button>
