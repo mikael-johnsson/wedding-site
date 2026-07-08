@@ -86,7 +86,7 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
         <p>Antal gäster lördag: {saturdayAttendees}</p>
         <p>Antal gäster söndag: {sundayAttendees}</p>
       </div>
-      <div className="flex justify-between mb-4">
+      <div className="flex flex-col justify-between mb-4 gap-4 sm:flex-row">
         <div className="flex flex-col gap-2">
           <form className="flex flex-col gap-3 mb-2 sm:flex-row sm:items-end">
             <div className="flex flex-col gap-1 sm:min-w-48">
