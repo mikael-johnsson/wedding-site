@@ -88,11 +88,11 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
       </div>
       <div className="flex justify-between mb-4">
         <div className="flex flex-col gap-2">
-          <form className="flex gap-4 mb-2">
-            <div className="flex gap-1 items-center">
+          <form className="flex flex-col gap-3 mb-2 sm:flex-row sm:items-end">
+            <div className="flex flex-col gap-1 sm:min-w-48">
               <label htmlFor="attending">Närvarande</label>
               <select
-                className="border rounded p-1"
+                className="w-full rounded border border-slate-300 px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-teal-700 focus:ring-2 focus:ring-teal-700/20 sm:min-w-56"
                 name="attending"
                 id="attending"
                 defaultValue={attending || "everyone"}
@@ -103,7 +103,7 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
               </select>
             </div>
             <button
-              className="px-2 py-1 rounded border hover:bg-teal-900 hover:text-white"
+              className="rounded border border-slate-300 px-3 py-2 text-sm font-medium text-slate-900 hover:bg-teal-900 hover:text-white"
               type="submit"
             >
               Filtrera
@@ -123,7 +123,7 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
             />
           </form>
         </div>
-        <div>
+        <div className="self-end">
           <OpenAllCardsButton isOpen={openAllCards} />
         </div>
       </div>
