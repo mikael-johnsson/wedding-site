@@ -91,7 +91,12 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
           <form className="flex gap-4 mb-2">
             <div className="flex gap-1 items-center">
               <label htmlFor="attending">Närvarande</label>
-              <select className="border rounded p-1" name="attending">
+              <select
+                className="border rounded p-1"
+                name="attending"
+                id="attending"
+                defaultValue={attending || "everyone"}
+              >
                 <option value="everyone">Alla</option>
                 <option value="attending">Närvarande</option>
                 <option value="not-attending">Icke närvarande</option>
