@@ -18,7 +18,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
     { href: "/", label: "HEM" },
     { href: "/helgen", label: "HELGEN" },
     { href: "/osa", label: "OSA" },
-    { href: "/boende", label: "BOENDE & TRANSPORT" },
+    { href: "/boende", label: "LOGISTIK" },
     { href: "/toast", label: "TOAST" },
     { href: "/gifts", label: "GÅVOR" },
   ];
@@ -48,7 +48,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
   }, [menuOpen]);
 
   return (
-    <header className="shadow px-4 md:px-12">
+    <header className="sticky top-0 shadow px-4 md:px-12 bg-bg-pastel-green">
       <div className="container mx-auto py-4 md:py-6">
         <div ref={mobileMenuRef} className="md:hidden">
           <div className="flex items-center justify-end">

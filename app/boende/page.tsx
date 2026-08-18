@@ -6,7 +6,7 @@ const LivingAndTransportPage = () => {
       </h1>
       <div className="mx-auto max-w-5xl md:max-w-2xl flex flex-col gap-6 px-2 md:px-4 py-10 lg:flex-row lg:items-start lg:justify-center lg:gap-10">
         <div className="w-full max-w-2xl px-4 py-10 lg:w-1/2">
-          <h2 className="text-2xl font-heading mb-10 text-center">Boende</h2>
+          <h2 className="text-2xl font-heading mb-6 text-center">Boende</h2>
           <div className="flex flex-col gap-4">
             <p>
               Bokar du på egen hand via telefon eller mejl till Toftaholm. Alla
@@ -23,7 +23,7 @@ const LivingAndTransportPage = () => {
           </div>
         </div>
         <div className="w-full max-w-2xl px-4 py-10 lg:w-1/2">
-          <h2 className="text-2xl font-heading text-center mb-10">Transport</h2>
+          <h2 className="text-2xl font-heading text-center mb-6">Transport</h2>
           <div className="flex flex-col gap-4">
             <p>Egen bil är att föredra.</p>
             <p>

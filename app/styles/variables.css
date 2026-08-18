@@ -1,6 +1,8 @@
 @theme {
   --color-bg-beige: #f5f0ed;
-  --color-bg-pastel-green: #b9fbc0;
+  /* --color-bg-pastel-green: #b9fbc0; */
+
+  --color-bg-pastel-green: #f6efca; /*behåll den*/
   --color-text-black: #46423f;
   --color-accent-green: #757462;
   --font-heading: "Futura";
