@@ -1,6 +1,6 @@
 const LivingAndTransportPage = () => {
   return (
-    <main className="min-h-screen px-10">
+    <main id="logistik" className="min-h-screen px-10">
       <h1 className="text-4xl font-heading text-center mt-10">
         BOENDE & TRANSPORT
       </h1>

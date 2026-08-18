@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const ToastPage = () => {
   return (
-    <main>
+    <main id="toast">
       <h1 className="text-4xl font-heading text-center mt-10 mb-5">
         TOAST & KYRKVÄRD
       </h1>

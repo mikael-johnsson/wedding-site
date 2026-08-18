@@ -32,7 +32,10 @@ const OSAPage = () => {
   }, [primaryAttending]);
 
   return (
-    <main className="min-h-screen px-4 py-12 text-text-black sm:px-6 lg:px-8">
+    <main
+      id="osa"
+      className="min-h-screen px-4 py-12 text-text-black sm:px-6 lg:px-8"
+    >
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
         <header className="grid gap-4 text-center">
           <h1 className="text-3xl font-heading sm:text-5xl">

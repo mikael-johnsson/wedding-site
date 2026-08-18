@@ -71,7 +71,7 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
     );
   }
   return (
-    <main className="min-h-screen p-4 py-12sm:px-6 lg:px-8">
+    <main id="guests" className="min-h-screen p-4 py-12sm:px-6 lg:px-8">
       <h1 className="text-4xl font-heading mb-4 text-center">GÄSTER</h1>
       <div className="flex flex-col justify-center mb-8 gap-1">
         <p>Totalt antal gäster: {amountOfAttending}</p>

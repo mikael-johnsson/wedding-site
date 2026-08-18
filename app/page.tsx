@@ -1,10 +1,23 @@
 import Image from "next/image";
 import CountdownClock from "./components/CountdownClock";
+import OSAPage from "./osa/page";
+import WeekendPage from "./helgen/page";
+import LivingAndTransportPage from "./boende/page";
+import ToastPage from "./toast/page";
+import GiftsPage from "./gifts/page";
+import GuestsPage from "./guests/page";
+import { checkAuth } from "./actions/UserActions";
 
-export default function Home() {
+type GuestsPageProps = {
+  searchParams: Promise<{ attending: string; openAll: string }>;
+};
+
+export default async function Home({ searchParams }: GuestsPageProps) {
+  const authUser = await checkAuth();
+
   return (
     <main className="flex flex-col gap-20 min-h-screen px-7 py-5 md:py-10 lg:px-25 xl:px-35">
-      <section className="min-h-screen flex flex-col gap-10">
+      <section id="hem" className="min-h-screen flex flex-col gap-10">
         <div className="flex items-center flex-col lg:flex-row lg:gap-10 lg:justify-center xl:px-15">
           <div className="w-[97%] md:w-[70%] py-20 md:mx-auto">
             <h1 className="text-4xl md:text-5xl font-heading text-center">
@@ -24,10 +37,7 @@ export default function Home() {
           />
         </div>
       </section>
-      <section
-        id="testSection"
-        className="mx-auto flex w-full flex-col items-center gap-15 sm:w-11/12 xl:w-[65%]"
-      >
+      <section className="mx-auto flex w-full flex-col items-center gap-15 sm:w-11/12 xl:w-[65%]">
         <div className="flex flex-col-reverse items-center justify-between gap-10 w-[85%] lg:flex-row ">
           <Image
             src="/simon_olivia_orange.jpeg"
@@ -68,6 +78,14 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      <WeekendPage />
+
+      <OSAPage />
+      <LivingAndTransportPage />
+      <ToastPage />
+      <GiftsPage />
+      {authUser && <GuestsPage searchParams={searchParams} />}
     </main>
   );
 }

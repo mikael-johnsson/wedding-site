@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const WeekendPage = () => {
   return (
-    <main className="min-h-screen">
+    <main id="helgen" className="min-h-screen">
       <h1 className="text-4xl font-heading text-center mt-10">HELGEN</h1>
       <div className="container mx-auto mt-8 flex flex-col gap-4 px-4 py-6 lg:flex-row lg:justify-center lg:gap-8">
         {/* FREDAG */}
