@@ -24,7 +24,7 @@ export default async function Home({ searchParams }: GuestsPageProps) {
               BERNOZZI WEDDING
             </h1>
             <p className="text-3xl text-center mt-15 mb-30">
-              10 - 12 sept 2027
+              10 – 12 sept 2027
             </p>
             <CountdownClock />
           </div>
@@ -80,7 +80,6 @@ export default async function Home({ searchParams }: GuestsPageProps) {
       </section>
 
       <WeekendPage />
-
       <OSAPage />
       <LivingAndTransportPage />
       <ToastPage />

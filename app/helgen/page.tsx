@@ -41,7 +41,7 @@ const WeekendPage = () => {
           </p>
 
           <ul className="list-none list-inside mt-15 flex flex-col gap-4 items-center">
-            <li>14:00 i Värnamo Kyrka</li>
+            <li>14:00 Vigsel i Värnamo Kyrka</li>
             <li>16:00 Brudskål på Toftaholm</li>
             <li>18:00 Middag och fest!</li>
           </ul>
@@ -63,7 +63,7 @@ const WeekendPage = () => {
 
           <ul className="list-none list-inside mt-15 flex flex-col gap-4 items-center">
             <li>10:00: Frukost</li>
-            <li>12:00: Hej då❤️</li>
+            <li>12:00: Hej då ❤️</li>
           </ul>
         </div>
       </div>

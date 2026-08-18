@@ -10,7 +10,7 @@ const LivingAndTransportPage = () => {
           <div className="flex flex-col gap-4">
             <p>
               Bokar du på egen hand via telefon eller mejl till Toftaholm. Alla
-              gäster har rabatterat pris. Uppge Simon och Olivia vid bokning.
+              gäster har rabatterat pris. Uppge Olivia och Simon vid bokning.
             </p>
             <p>Dubbelrum: 1 990 kr per rum & natt</p>
             <p>Enkelrum: 1 590 kr per rum & natt</p>
@@ -32,9 +32,8 @@ const LivingAndTransportPage = () => {
             </p>
             <p>
               Har du ingen aning om hur du ska transportera dig? Hör av dig till
-              brudparet så snart som möjligt så ska vi lösa det!
+              kyrkvärdarna så snart som möjligt så ska vi lösa det!
             </p>
-            <p>Olivia: 073-8058778</p>
           </div>
         </div>
       </div>

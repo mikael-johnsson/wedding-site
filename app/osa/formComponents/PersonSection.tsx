@@ -40,7 +40,7 @@ function PersonSection({
       </div>
 
       <div>
-        <span className={labelClasses}>Kommer att närvara?</span>
+        <span className={labelClasses}>Jag kommer!</span>
         <div className="mt-2 flex flex-wrap gap-4">
           <label className="flex items-center gap-2 text-stone-700">
             <input
@@ -81,7 +81,7 @@ function PersonSection({
               id={`${prefix}Allergies`}
               name={`${prefix}Allergies`}
               rows={2}
-              placeholder="Skriv inga allergier om du inte har några"
+              placeholder="Till exempel skaldjur eller dålig musik"
             />
           </div>
 
@@ -125,10 +125,10 @@ function PersonSection({
           />
           <div>
             <span className="text-sm text-text-black italic">
-              Boende bokas på egen hand. Uppge Olivia & Simon vid bokning.
+              OBS! Boende bokas på egen hand. Uppge Olivia & Simon vid bokning.
             </span>
             <span className="ml-1 text-sm text-text-black italic">
-              <Link href="/boende" target="_blank">
+              <Link href="#logistik" target="_blank">
                 Mer om boende här.
               </Link>
             </span>
