@@ -16,8 +16,8 @@ export default async function Home({ searchParams }: GuestsPageProps) {
   const authUser = await checkAuth();
 
   return (
-    <main className="flex flex-col gap-20 min-h-screen px-7 py-5 md:py-10 lg:px-25 xl:px-35">
-      <section id="hem" className="min-h-screen flex flex-col gap-10">
+    <main className="flex flex-col gap-25  px-7 lg:px-25 xl:px-35 pt-10 ">
+      <section id="hem" className="flex flex-col gap-10 scroll-mt-40">
         <div className="flex items-center flex-col lg:flex-row lg:gap-10 lg:justify-center xl:px-15">
           <div className="w-[97%] md:w-[70%] py-20 md:mx-auto">
             <h1 className="text-4xl md:text-5xl font-heading text-center">
@@ -33,12 +33,12 @@ export default async function Home({ searchParams }: GuestsPageProps) {
             alt="Wedding"
             width={500}
             height={600}
-            className="rounded-lg shadow-xl"
+            className="rounded-lg shadow-xl mt-30 sm:my-0"
           />
         </div>
       </section>
-      <section className="mx-auto flex w-full flex-col items-center gap-15 sm:w-11/12 xl:w-[65%]">
-        <div className="flex flex-col-reverse items-center justify-between gap-10 w-[85%] lg:flex-row ">
+      <section className="mx-auto flex w-full flex-col items-center gap-20 sm:w-11/12 xl:w-[65%]">
+        <div className="flex flex-col-reverse items-center justify-between gap-6 w-[85%] lg:flex-row ">
           <Image
             src="/simon_olivia_orange.jpeg"
             alt="Wedding"
@@ -51,7 +51,7 @@ export default async function Home({ searchParams }: GuestsPageProps) {
             oss och vill att DU ska vara med❤️
           </p>
         </div>
-        <div className="flex flex-col items-center justify-between gap-10 w-[80%] lg:flex-row">
+        <div className="flex flex-col items-center justify-between gap-6 w-[80%] lg:flex-row">
           <p className="text-center sm:text-lg">
             Vi fixar en oförglömlig helg i Småland. Du behöver bara dyka upp i
             dina finaste, och mest dansvänliga, kläder.
@@ -64,7 +64,7 @@ export default async function Home({ searchParams }: GuestsPageProps) {
             className="rounded-lg shadow-xl"
           />
         </div>
-        <div className="flex flex-col-reverse items-center justify-between gap-10 w-[80%] lg:flex-row">
+        <div className="flex flex-col-reverse items-center justify-between gap-6 w-[80%] lg:flex-row">
           <Image
             src="/frances.jpeg"
             alt="Wedding"

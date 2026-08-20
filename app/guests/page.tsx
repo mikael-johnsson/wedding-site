@@ -64,15 +64,18 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
 
   if (!authUser) {
     return (
-      <main className="min-h-screen p-4 py-12sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-heading mb-4">Gäster</h1>
+      <section className="min-h-screen px-4 sm:px-6 lg:px-8 scroll-mt-30">
+        <h1 className="text-4xl font-heading mb-8">Gäster</h1>
         <p className="mb-4">Du måste vara inloggad för att se gästlistan.</p>
-      </main>
+      </section>
     );
   }
   return (
-    <main id="guests" className="min-h-screen p-4 py-12sm:px-6 lg:px-8">
-      <h1 className="text-4xl font-heading mb-4 text-center">GÄSTER</h1>
+    <section
+      id="guests"
+      className="min-h-screen px-4 sm:px-6 lg:px-8 scroll-mt-30"
+    >
+      <h1 className="text-4xl font-heading mb-8 text-center">GÄSTER</h1>
       <div className="flex flex-col justify-center mb-8 gap-1">
         <p>Totalt antal gäster: {amountOfAttending}</p>
         <p>Totalt antal svar (antal inbjudningar): {amountOfOSA}</p>
@@ -146,7 +149,7 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
           ))
         )}
       </ul>
-    </main>
+    </section>
   );
 };
 

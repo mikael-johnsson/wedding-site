@@ -2,11 +2,11 @@ import Image from "next/image";
 
 const WeekendPage = () => {
   return (
-    <main id="helgen" className="min-h-screen">
-      <h1 className="text-4xl font-heading text-center mt-10">HELGEN</h1>
+    <section id="helgen" className="scroll-mt-30">
+      <h1 className="text-4xl font-heading text-center mb-8">HELGEN</h1>
       <div className="container mx-auto mt-8 flex flex-col gap-4 px-4 py-6 lg:flex-row lg:justify-center lg:gap-8">
         {/* FREDAG */}
-        <div className="w-full rounded border p-6 lg:w-[30%] lg:px-4">
+        <div className="w-full rounded border p-4 lg:w-[30%] lg:px-4">
           <Image
             src="/toftaholm_2.jpeg"
             alt="Wedding"
@@ -19,10 +19,18 @@ const WeekendPage = () => {
             Plats: Toftaholm Herrgård
           </p>
           <ul className="list-none list-inside mt-15 flex flex-col gap-4 items-center">
-            <li>18:00 Skål och välkomna!</li>
-            <li>18:30 Middag (195kr per person)</li>
-            <li>19:30 Quiz </li>
-            <li>21:00 Överraskning</li>
+            <li className="flex justify-between w-full">
+              <span>18:00</span>
+              <span>Skål och välkomna!</span>
+            </li>
+            <li className="flex justify-between w-full">
+              <span>18:30</span>
+              <span>Middag (195kr pp)</span>
+            </li>
+            <li className="flex justify-between w-full">
+              <span>21:00</span>
+              <span>Överraskning!</span>
+            </li>
           </ul>
         </div>
 
@@ -37,13 +45,22 @@ const WeekendPage = () => {
           />
           <h2 className="text-2xl font-heading text-center my-10">LÖRDAG</h2>
           <p className="text-md font-heading text-center ">
-            Plats: Värnamo Kyrka / Toftaholm Herrgård
+            Plats: Värnamo Kyrka / <br /> Toftaholm Herrgård
           </p>
 
           <ul className="list-none list-inside mt-15 flex flex-col gap-4 items-center">
-            <li>14:00 Vigsel i Värnamo Kyrka</li>
-            <li>16:00 Brudskål på Toftaholm</li>
-            <li>18:00 Middag och fest!</li>
+            <li className="flex justify-between w-full">
+              <span>14:00</span>
+              <span>Vigsel i Värnamo Kyrka</span>
+            </li>
+            <li className="flex justify-between w-full">
+              <span>16:00</span>
+              <span>Brudskål på Toftaholm</span>
+            </li>
+            <li className="flex justify-between w-full">
+              <span>18:00</span>
+              <span>Middag och fest!</span>
+            </li>
           </ul>
         </div>
 
@@ -62,12 +79,18 @@ const WeekendPage = () => {
           </p>
 
           <ul className="list-none list-inside mt-15 flex flex-col gap-4 items-center">
-            <li>10:00: Frukost</li>
-            <li>12:00: Hej då ❤️</li>
+            <li className="flex justify-between w-full">
+              <span>10:00</span>
+              <span>Frukost</span>
+            </li>
+            <li className="flex justify-between w-full">
+              <span>12:00</span>
+              <span>Hej då ❤️</span>
+            </li>
           </ul>
         </div>
       </div>
-    </main>
+    </section>
   );
 };
 

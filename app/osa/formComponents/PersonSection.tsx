@@ -7,7 +7,7 @@ import Link from "next/link";
 const fieldClasses =
   "mt-1 w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-stone-900 shadow-sm outline-none transition focus:border-stone-500 focus:ring-2 focus:ring-stone-200";
 
-const labelClasses = "text-sm font-medium text-stone-700";
+const labelClasses = "text-md font-medium text-text-black";
 
 function PersonSection({
   prefix,
@@ -22,7 +22,7 @@ function PersonSection({
 
   return (
     <fieldset className="grid gap-4 rounded-2xl border border-stone-200 bg-stone-50 p-5">
-      <legend className="px-2 text-sm font-semibold uppercase tracking-[0.2em] text-stone-500">
+      <legend className="px-2 text-md font-semibold uppercase tracking-[0.2em] text-stone-500">
         {title}
       </legend>
 
@@ -123,13 +123,14 @@ function PersonSection({
             prefix={prefix}
             title="Vilka dagar sover du över?"
           />
-          <div>
-            <span className="text-sm text-text-black italic">
+          <div className="p-2">
+            <span className="text-md text-text-black italic">
               OBS! Boende bokas på egen hand. Uppge Olivia & Simon vid bokning.
+              Mer om boende
             </span>
             <span className="ml-1 text-sm text-text-black italic">
-              <Link href="#logistik" target="_blank">
-                Mer om boende här.
+              <Link href="#logistik" target="_blank" className="font-semibold ">
+                här.
               </Link>
             </span>
           </div>

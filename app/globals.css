@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 body {
-  background-color: var(--color-bg-pastel-green);
+  background-color: var(--color-bg-primary);
   color: var(--color-text-black);
   font-family: "Futura-medium", sans-serif;
 }

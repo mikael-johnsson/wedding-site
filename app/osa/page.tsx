@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { saveGuestRsvp } from "../actions/GuestActions";
 import PersonSection from "./formComponents/PersonSection";
+import { toast } from "sonner";
 
 function SubmissionNotice() {
   const searchParams = useSearchParams();
@@ -13,11 +14,11 @@ function SubmissionNotice() {
     return null;
   }
 
-  return (
-    <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4 text-emerald-900">
-      Tack! Ditt svar är sparat.
-    </div>
-  );
+  // return (
+  //   <div className="rounded-2xl bg-green-100 p-4 text-center text-green-800">
+  //     Tack för din OSA!
+  //   </div>
+  // );
 }
 
 const OSAPage = () => {
@@ -25,6 +26,23 @@ const OSAPage = () => {
   const [primaryAttending, setPrimaryAttending] = useState<boolean | null>(
     null,
   );
+  const searchParams = useSearchParams();
+  const hasSubmitted = searchParams.get("submitted") === "1";
+
+  useEffect(() => {
+    if (hasSubmitted) {
+      toast.success("Tack för din OSA! Vad kul att du kommer!");
+    } else if (searchParams.get("submitted") === "0") {
+      toast.error("Tack för din OSA! Vad synd att du inte kan komma.");
+    }
+
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}${window.location.hash}`,
+    );
+  }, [hasSubmitted]);
+
   useEffect(() => {
     if (primaryAttending === false) {
       setHasPlusOne(false);
@@ -32,13 +50,10 @@ const OSAPage = () => {
   }, [primaryAttending]);
 
   return (
-    <main
-      id="osa"
-      className="min-h-screen px-4 py-12 text-text-black sm:px-6 lg:px-8"
-    >
+    <section id="osa" className="min-h-screen text-text-black scroll-mt-30">
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
         <header className="grid gap-4 text-center">
-          <h1 className="text-3xl font-heading sm:text-5xl">
+          <h1 className="text-3xl font-heading sm:text-4xl">
             BRÖLLOPSINBJUDAN
           </h1>
           <p className="mx-auto max-w-xl text-text-black sm:text-lg">
@@ -82,14 +97,14 @@ const OSAPage = () => {
           )}
 
           <button
-            className="inline-flex w-full items-center justify-center rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-stone-700 sm:w-auto"
+            className="inline-flex w-full items-center justify-center rounded-full bg-text-black px-6 py-3 text-sm font-semibold text-bg-primary transition hover:bg-black hover:shadow hover:cursor-pointer sm:w-auto"
             type="submit"
           >
             Skicka OSA
           </button>
         </form>
       </div>
-    </main>
+    </section>
   );
 };
 

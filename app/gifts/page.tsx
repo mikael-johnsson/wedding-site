@@ -2,11 +2,11 @@ import Image from "next/image";
 
 const GiftsPage = () => {
   return (
-    <main
+    <section
       id="gifts"
-      className="min-h-screen px-4 py-12 text-text-black sm:px-6 lg:px-8"
+      className=" px-4 text-text-black sm:px-6 lg:px-8 scroll-mt-30"
     >
-      <h1 className="text-4xl font-heading text-center my-10">GÅVOR</h1>
+      <h1 className="text-4xl font-heading text-center mb-8">GÅVOR</h1>
       <p className="text-center w-70 md:w-125 mx-auto">
         Den största gåvan är att du dyker upp och firar oss. Vill du också bidra
         med en slant till vår bröllopsresa blir vi extra glada.
@@ -19,7 +19,7 @@ const GiftsPage = () => {
         height={500}
         className="mx-auto my-10 rounded-lg shadow-xl"
       />
-    </main>
+    </section>
   );
 };
 

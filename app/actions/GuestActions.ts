@@ -79,7 +79,13 @@ export const saveGuestRsvp = async (formData: FormData) => {
     rsvpSubmittedAt: new Date(),
   });
 
-  redirect("/osa?submitted=1");
+  if (primaryGuest.attending) {
+    redirect("/?submitted=1");
+  } else {
+    redirect("/?submitted=0");
+  }
+
+  redirect("/?submitted=1");
 };
 
 export const deleteGuest = async (guestId: string) => {

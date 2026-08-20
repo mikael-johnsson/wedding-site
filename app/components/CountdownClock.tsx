@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { counter, TimeRemainingType } from "../lib/counter";
+import Link from "next/link";
 
 const CountdownClock = () => {
   const [timeRemaining, setTimeRemaining] =
@@ -40,7 +41,9 @@ const CountdownClock = () => {
           <p className="text-center mt-2">{timeRemaining.seconds}</p>
         </div>
       </div>
-      <p className="text-lg text-center font-bold mt-10">OSA senast 31 maj</p>
+      <p className="text-lg text-center font-bold mt-10">
+        <Link href="#osa">OSA</Link> senast 31 maj
+      </p>
     </div>
   );
 };

@@ -48,7 +48,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 shadow px-4 md:px-12 bg-bg-pastel-green">
+    <header className="sticky top-0 shadow px-4 md:px-12 bg-bg-primary">
       <div className="container mx-auto py-4 md:py-6">
         <div ref={mobileMenuRef} className="md:hidden">
           <div className="flex items-center justify-end">

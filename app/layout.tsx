@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./components/Header";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Bernozzi Wedding",
@@ -17,6 +18,11 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
+        <Toaster
+          toastOptions={{
+            style: { background: "#f5f0ed", color: "#46423f" },
+          }}
+        />{" "}
       </body>
     </html>
   );
