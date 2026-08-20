@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+import EmailModal from "../components/EmailModal";
 
 const ToastPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <section id="toast" className="min-h-screen px-10 scroll-mt-30">
       <h1 className="text-4xl font-heading text-center mb-8">
@@ -45,7 +50,10 @@ const ToastPage = () => {
             </div>
           </div>
           <div className="flex flex-col justify-center mt-10 items-center gap-4">
-            <button className="border rounded p-2 bg-text-black text-bg-primary w-40">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="border rounded p-2 bg-text-black text-bg-primary w-40"
+            >
               Anmäl tal
             </button>
             <p>Här anmäler du tal eller spex!</p>
@@ -95,6 +103,7 @@ const ToastPage = () => {
           </div>
         </div>
       </div>
+      {isModalOpen && <EmailModal setIsModalOpen={setIsModalOpen} />}
     </section>
   );
 };
