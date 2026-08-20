@@ -62,53 +62,50 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
               {menuOpen ? "Stäng" : "Meny"}
             </button>
           </div>
+          {menuOpen && (
+            <div
+              id="mobile-nav"
+              className={`mt-4 origin-top border-t border-text-black/20 pt-4 overflow-hidden transition-all duration-200 ease-out max-h-128 opacity-100 translate-y-0`}
+            >
+              <nav className="flex flex-col gap-2">
+                {links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`rounded px-2 py-2 text-text-black hover:underline ${pathname === link.href ? "underline" : ""} `}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                {authUser && (
+                  <Link
+                    href="#guests"
+                    className={`rounded px-2 py-2 text-text-black hover:underline ${pathname === "#guests" ? "underline" : ""} `}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    GÄSTLISTAN
+                  </Link>
+                )}
+              </nav>
 
-          <div
-            id="mobile-nav"
-            className={`mt-4 origin-top border-t border-text-black/20 pt-4 overflow-hidden transition-all duration-200 ease-out ${
-              menuOpen
-                ? "max-h-128 opacity-100 translate-y-0"
-                : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"
-            }`}
-          >
-            <nav className="flex flex-col gap-2">
-              {links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`rounded px-2 py-2 text-text-black hover:underline ${pathname === link.href ? "underline" : ""} `}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              {authUser && (
-                <Link
-                  href="#guests"
-                  className={`rounded px-2 py-2 text-text-black hover:underline ${pathname === "#guests" ? "underline" : ""} `}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  GÄSTLISTAN
-                </Link>
-              )}
-            </nav>
-
-            <div className="testClass mt-4 border-t border-text-black/20 pt-4">
-              {authUser ? (
-                <span className="block px-2 py-2 text-text-black">
-                  Inloggad som: {authUser.username}
-                </span>
-              ) : (
-                <Link
-                  href="/login"
-                  className="block py-2 text-text-black hover:underline"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Logga in
-                </Link>
-              )}
+              <div className="testClass mt-4 border-t border-text-black/20 pt-4">
+                {authUser ? (
+                  <span className="block px-2 py-2 text-text-black">
+                    Inloggad som: {authUser.username}
+                  </span>
+                ) : (
+                  <Link
+                    href="/login"
+                    className="block py-2 text-text-black hover:underline"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Logga in
+                  </Link>
+                )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         <div className="hidden md:flex md:items-center md:justify-center">
