@@ -1,11 +1,11 @@
 import Image from "next/image";
 import CountdownClock from "./components/CountdownClock";
-import OSAPage from "./osa/page";
-import WeekendPage from "./helgen/page";
-import LivingAndTransportPage from "./boende/page";
-import ToastPage from "./toast/page";
-import GiftsPage from "./gifts/page";
-import GuestsPage from "./guests/page";
+import OSAPage from "./osa/osaPage";
+import WeekendPage from "./helgen/weekendPage";
+import LivingAndTransportPage from "./boende/boendePage";
+import ToastPage from "./toast/toastPage";
+import GiftsPage from "./gifts/giftsPage";
+import GuestsPage from "./guests/guestsPage";
 import { checkAuth } from "./actions/UserActions";
 
 type GuestsPageProps = {
