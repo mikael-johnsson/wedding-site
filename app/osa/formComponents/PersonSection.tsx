@@ -125,7 +125,7 @@ function PersonSection({
                 className={labelClasses}
                 htmlFor={`${prefix}MealChoiceFriday`}
               >
-                Middagsval fredag
+                Middagsval fredag (195 kr)
               </label>
               <textarea
                 className={`${fieldClasses} min-h-18`}
