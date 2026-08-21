@@ -48,7 +48,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 shadow px-4 md:px-12 bg-bg-primary">
+    <header className="sticky top-0 z-50 opacity-94 shadow px-4 md:px-12 bg-bg-primary">
       <div className="container mx-auto py-4 md:py-6">
         <div ref={mobileMenuRef} className="md:hidden">
           <div className="flex items-center justify-end">
@@ -65,7 +65,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
           {menuOpen && (
             <div
               id="mobile-nav"
-              className={`mt-4 origin-top border-t border-text-black/20 pt-4 overflow-hidden transition-all duration-200 ease-out max-h-128 opacity-100 translate-y-0`}
+              className={`mt-4 origin-top border-t border-text-black/20 pt-4 overflow-hidden transition-all duration-200 ease-out max-h-128  translate-y-0`}
             >
               <nav className="flex flex-col gap-2">
                 {links.map((link) => (

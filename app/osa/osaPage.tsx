@@ -12,6 +12,7 @@ const OSAPage = () => {
   const [primaryAttending, setPrimaryAttending] = useState<boolean | null>(
     null,
   );
+  const [openForm, setOpenForm] = useState(false);
   const searchParams = useSearchParams();
   const hasSubmitted = searchParams.get("submitted") === "1";
 
@@ -36,7 +37,7 @@ const OSAPage = () => {
   }, [primaryAttending]);
 
   return (
-    <section id="osa" className="min-h-screen text-text-black scroll-mt-30">
+    <section id="osa" className="text-text-black scroll-mt-30">
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
         <header className="grid gap-4 text-center">
           <h1 className="text-3xl font-heading sm:text-4xl">
@@ -48,6 +49,12 @@ const OSAPage = () => {
           <p className="mx-auto max-w-xl text-text-black sm:text-lg">
             Om du tar med en +1 visas extra fält automatiskt.
           </p>
+          <button
+            onClick={() => setOpenForm(!openForm)}
+            className="border rounded-md p-2 mx-auto bg-text-black text-bg-primary w-40"
+          >
+            {openForm ? "Stäng formuläret" : "Öppna formuläret"}
+          </button>
         </header>
         <Suspense fallback={null}>
           <SubmissionNotice />
@@ -55,39 +62,55 @@ const OSAPage = () => {
 
         <form
           action={saveGuestRsvp}
-          className="grid gap-6 rounded-3xl bg-white p-6 shadow-lg sm:p-8"
+          className={` rounded-3xl bg-white p-6 shadow-lg sm:p-8 `}
         >
-          <PersonSection
-            prefix="primary"
-            title="Huvudgäst"
-            onAttendingChange={setPrimaryAttending}
-          />
+          <div className={`opacity-50`}>
+            <fieldset
+              className={`grid gap-4 rounded-2xl border border-stone-200 bg-stone-50 p-5 ${openForm ? "hidden" : "block"}`}
+            >
+              <legend className="px-2 text-md font-semibold uppercase tracking-[0.2em] text-stone-500">
+                Huvudgäst
+              </legend>
+              <label>Namn</label>
+              <input
+                disabled
+                className="mt-1 w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-stone-900 shadow-sm outline-none transition focus:border-stone-500 focus:ring-2 focus:ring-stone-200"
+              />
+            </fieldset>
+          </div>
+          <div className={`grid gap-6 ${openForm ? "block" : "hidden"}`}>
+            <PersonSection
+              prefix="primary"
+              title="Huvudgäst"
+              onAttendingChange={setPrimaryAttending}
+            />
 
-          {primaryAttending !== false && (
-            <>
-              <label className="flex items-center gap-3 rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-stone-700">
-                <input
-                  checked={hasPlusOne}
-                  className="h-4 w-4 rounded border-stone-300 text-text-black focus:ring-stone-500"
-                  name="hasPlusOne"
-                  onChange={(event) => setHasPlusOne(event.target.checked)}
-                  type="checkbox"
-                />
-                Jag tar med en +1
-              </label>
+            {primaryAttending !== false && (
+              <>
+                <label className="flex items-center gap-3 rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-stone-700">
+                  <input
+                    checked={hasPlusOne}
+                    className="h-4 w-4 rounded border-stone-300 text-text-black focus:ring-stone-500"
+                    name="hasPlusOne"
+                    onChange={(event) => setHasPlusOne(event.target.checked)}
+                    type="checkbox"
+                  />
+                  Jag tar med en +1
+                </label>
 
-              {hasPlusOne ? (
-                <PersonSection prefix="plusOne" title="+1" />
-              ) : null}
-            </>
-          )}
+                {hasPlusOne ? (
+                  <PersonSection prefix="plusOne" title="+1" />
+                ) : null}
+              </>
+            )}
 
-          <button
-            className="inline-flex w-full items-center justify-center rounded-full bg-text-black px-6 py-3 text-sm font-semibold text-bg-primary transition hover:bg-black hover:shadow hover:cursor-pointer sm:w-auto"
-            type="submit"
-          >
-            Skicka OSA
-          </button>
+            <button
+              className="inline-flex w-full items-center justify-center rounded-full bg-text-black px-6 py-3 text-sm font-semibold text-bg-primary transition hover:bg-black hover:shadow hover:cursor-pointer sm:w-auto"
+              type="submit"
+            >
+              Skicka OSA
+            </button>
+          </div>
         </form>
       </div>
     </section>

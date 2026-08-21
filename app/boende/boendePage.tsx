@@ -1,9 +1,9 @@
 const LivingAndTransportPage = () => {
   return (
-    <section id="logistik" className=" px-10 scroll-mt-30">
+    <section id="logistik" className="px-10 scroll-mt-30">
       <h1 className="text-4xl font-heading text-center">BOENDE & TRANSPORT</h1>
-      <div className="mx-auto max-w-5xl md:max-w-2xl flex flex-col gap-6 px-2 md:px-4 py-10 lg:flex-row lg:items-start lg:justify-center lg:gap-10">
-        <div className="w-full max-w-2xl px-2 py-10 lg:w-1/2">
+      <div className="mx-auto max-w-5xl md:max-w-2xl flex flex-col gap-6 px-2 md:px-4 py-7 lg:flex-row lg:items-start lg:justify-center lg:gap-10">
+        <div className="w-full max-w-2xl px-2 py-7 lg:w-1/2">
           <h2 className="text-2xl font-heading text-center mb-6">Boende</h2>
           <div className="flex flex-col gap-4">
             <p>
@@ -20,7 +20,7 @@ const LivingAndTransportPage = () => {
             </div>
           </div>
         </div>
-        <div className="w-full max-w-2xl px-4 py-10 lg:w-1/2">
+        <div className="w-full max-w-2xl px-4 py-7 lg:w-1/2">
           <h2 className="text-2xl font-heading text-center mb-6">Transport</h2>
           <div className="flex flex-col gap-4">
             <p>Egen bil är att föredra.</p>
