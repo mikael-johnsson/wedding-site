@@ -1,13 +1,15 @@
 "use client";
 
-import { Dispatch, SetStateAction } from "react";
+import { useRouter } from "next/navigation";
+import { Dispatch, SetStateAction, SubmitEvent } from "react";
 
 type EmailModalProps = {
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 const EmailModal = ({ setIsModalOpen }: EmailModalProps) => {
-  const handleSend = async (e: React.FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+  const handleSend = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const name = formData.get("name") as string;
@@ -22,10 +24,11 @@ const EmailModal = ({ setIsModalOpen }: EmailModalProps) => {
         },
         body: JSON.stringify({ name, email, message }),
       });
+      router.push("/?submitted=emailSuccess");
       setIsModalOpen(false);
-      console.log("Res", res);
     } catch (error) {
       console.error("Error sending email:", error);
+      router.push("/?submitted=emailError");
     }
   };
   return (
@@ -33,6 +36,7 @@ const EmailModal = ({ setIsModalOpen }: EmailModalProps) => {
       <div className="flex flex-col items-center gap-4 w-full max-w-md bg-bg-primary text-primary rounded-xl shadow-xl px-8 py-6">
         <h2 className="font-semibold">Anmälan av tal</h2>
         <p>Detta meddelande skickas till toastvärdarna</p>
+        <p>OBS! Nu i utvecklingsfas skickas det till Mikael Johnsson</p>
         <form onSubmit={handleSend} className="flex flex-col gap-2 w-full">
           <div className="flex justify-between">
             <label htmlFor="name">Namn:</label>

@@ -55,40 +55,45 @@ const readPerson = (formData: FormData, prefix: string): PersonInput => {
 };
 
 export const saveGuestRsvp = async (formData: FormData) => {
-  const hasPlusOne = formData.get("hasPlusOne") === "on";
+  try {
+    const hasPlusOne = formData.get("hasPlusOne") === "on";
 
-  const primaryGuest = readPerson(formData, "primary");
+    const primaryGuest = readPerson(formData, "primary");
 
-  if (!primaryGuest.name) {
-    throw new Error("Primary guest name is required");
+    if (!primaryGuest.name) {
+      throw new Error("Primary guest name is required");
+    }
+
+    await connectDB();
+
+    const plusOne = hasPlusOne ? readPerson(formData, "plusOne") : undefined;
+
+    if (hasPlusOne && !plusOne?.name) {
+      throw new Error(
+        "Plus one name is required when the +1 option is selected",
+      );
+    }
+
+    const numberOfGuests =
+      (primaryGuest.attending ? 1 : 0) + (plusOne?.attending ? 1 : 0);
+
+    const res = await GuestModel.create({
+      primaryGuest,
+      plusOne,
+      numberOfGuests,
+      rsvpSubmittedAt: new Date(),
+    });
+    console.log("Res", res);
+
+    if (primaryGuest.attending) {
+      redirect("/?submitted=osaSuccess");
+    } else {
+      redirect("/?submitted=osaDeclined");
+    }
+  } catch (error) {
+    console.error("Error saving guest RSVP:", error);
+    redirect("/?submitted=osaError");
   }
-
-  await connectDB();
-
-  const plusOne = hasPlusOne ? readPerson(formData, "plusOne") : undefined;
-
-  if (hasPlusOne && !plusOne?.name) {
-    throw new Error("Plus one name is required when the +1 option is selected");
-  }
-
-  const numberOfGuests =
-    (primaryGuest.attending ? 1 : 0) + (plusOne?.attending ? 1 : 0);
-
-  const res = await GuestModel.create({
-    primaryGuest,
-    plusOne,
-    numberOfGuests,
-    rsvpSubmittedAt: new Date(),
-  });
-  console.log("Res", res);
-
-  if (primaryGuest.attending) {
-    redirect("/?submitted=1");
-  } else {
-    redirect("/?submitted=0");
-  }
-
-  redirect("/?submitted=1");
 };
 
 export const deleteGuest = async (guestId: string) => {

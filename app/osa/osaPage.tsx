@@ -6,6 +6,7 @@ import { saveGuestRsvp } from "../actions/GuestActions";
 import PersonSection from "./formComponents/PersonSection";
 import { toast } from "sonner";
 import SubmissionNotice from "./formComponents/SubmissionNotice";
+import { submissionMessages, SubmissionStatus } from "../models/Toasts";
 
 const OSAPage = () => {
   const [hasPlusOne, setHasPlusOne] = useState(false);
@@ -14,13 +15,14 @@ const OSAPage = () => {
   );
   const [openForm, setOpenForm] = useState(false);
   const searchParams = useSearchParams();
-  const hasSubmitted = searchParams.get("submitted") === "1";
+  const status = (searchParams.get("submitted") as SubmissionStatus) || null;
+  const message = submissionMessages[status];
 
   useEffect(() => {
-    if (hasSubmitted) {
-      toast.success("Tack för din OSA! Vad kul att du kommer!");
-    } else if (searchParams.get("submitted") === "0") {
-      toast.error("Tack för din OSA! Vad synd att du inte kan komma.");
+    if (status === "osaSuccess") {
+      toast.success(message);
+    } else if (status === "osaDeclined") {
+      toast.error(message);
     }
 
     window.history.replaceState(
@@ -28,7 +30,7 @@ const OSAPage = () => {
       "",
       `${window.location.pathname}${window.location.hash}`,
     );
-  }, [hasSubmitted]);
+  }, [status, message]);
 
   useEffect(() => {
     if (primaryAttending === false) {
