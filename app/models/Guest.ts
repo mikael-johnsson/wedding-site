@@ -8,6 +8,7 @@ export type PersonInfo = {
   attending: boolean;
   allergies?: string;
   mealChoice?: string;
+  mealChoiceFriday?: string;
   notes?: string;
   daysAttending?: WeddingDay[];
   daysOvernighting?: OvernightDay[];
@@ -47,6 +48,7 @@ const personInfoSchema = new Schema<PersonInfo>(
     attending: { type: Boolean, required: true, default: false },
     allergies: { type: String, required: false, default: "" },
     mealChoice: { type: String, required: false, default: "" },
+    mealChoiceFriday: { type: String, required: false, default: "" },
     notes: { type: String, default: "" },
     daysAttending: {
       type: [String],

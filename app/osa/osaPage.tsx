@@ -5,21 +5,7 @@ import { Suspense, useEffect, useState } from "react";
 import { saveGuestRsvp } from "../actions/GuestActions";
 import PersonSection from "./formComponents/PersonSection";
 import { toast } from "sonner";
-
-function SubmissionNotice() {
-  const searchParams = useSearchParams();
-  const hasSubmitted = searchParams.get("submitted") === "1";
-
-  if (!hasSubmitted) {
-    return null;
-  }
-
-  // return (
-  //   <div className="rounded-2xl bg-green-100 p-4 text-center text-green-800">
-  //     Tack för din OSA!
-  //   </div>
-  // );
-}
+import SubmissionNotice from "./formComponents/SubmissionNotice";
 
 const OSAPage = () => {
   const [hasPlusOne, setHasPlusOne] = useState(false);

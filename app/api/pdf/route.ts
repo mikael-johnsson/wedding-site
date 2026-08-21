@@ -71,31 +71,29 @@ export const POST = async (request: Request) => {
       .text(`Totalt antal gäster: ${attendingStats.amountOfAttending}`);
     doc
       .fontSize(10)
+      .text(`Totalt antal OSA-svar: ${attendingStats.amountOfOSA}`);
+    doc
+      .fontSize(10)
+      .text(`Totalt antal nej: ${attendingStats.amountOfNotAttending}`);
+    doc
+      .fontSize(10)
       .text(
-        `Totalt antal svar (antal inbjudningar): ${attendingStats.amountOfOSA}`,
+        `Övernattningar fredag: ${attendingStats.fridayOvernights} personer`,
       );
     doc
       .fontSize(10)
       .text(
-        `Totalt antal nej (antal inbjudningar): ${attendingStats.amountOfNotAttending}`,
+        `Övernattningar lördag: ${attendingStats.saturdayOvernights} personer`,
       );
     doc
       .fontSize(10)
-      .text(`Antal övernattningar fredag: ${attendingStats.fridayOvernights}`);
+      .text(`Gäster fredag: ${attendingStats.fridayAttendees} personer`);
     doc
       .fontSize(10)
-      .text(
-        `Antal övernattningar lördag: ${attendingStats.saturdayOvernights}`,
-      );
+      .text(`Gäster lördag: ${attendingStats.saturdayAttendees} personer`);
     doc
       .fontSize(10)
-      .text(`Antal gäster fredag: ${attendingStats.fridayAttendees}`);
-    doc
-      .fontSize(10)
-      .text(`Antal gäster lördag: ${attendingStats.saturdayAttendees}`);
-    doc
-      .fontSize(10)
-      .text(`Antal gäster söndag: ${attendingStats.sundayAttendees}`);
+      .text(`Gäster söndag: ${attendingStats.sundayAttendees} personer`);
     doc.moveDown();
 
     guests.forEach((guest, i) => {
@@ -111,30 +109,33 @@ export const POST = async (request: Request) => {
       doc.fontSize(12).text(`Huvudgäst: ${p.name}`, { indent: 10 });
       doc
         .fontSize(12)
-        .text(`Närvarande: ${p.attending ? "Ja" : "Nej"}`, { indent: 10 });
+        .text(`Närvarande: ${p.attending ? "Ja" : "Nej"}`, { indent: 20 });
 
-      doc.fontSize(12).text(`Allergier: ${p.allergies || "-"}`, { indent: 10 });
+      doc.fontSize(12).text(`Allergier: ${p.allergies || "-"}`, { indent: 20 });
       doc
         .fontSize(12)
-        .text(`Måltidsval: ${p.mealChoice || "-"}`, { indent: 10 });
-      doc.fontSize(12).text(`Anteckningar: ${p.notes || "-"}`, { indent: 10 });
+        .text(`Måltidsval: ${p.mealChoice || "-"}`, { indent: 20 });
+      doc.fontSize(12).text(`Måltidsval fredag: ${p.mealChoiceFriday || "-"}`, {
+        indent: 20,
+      });
+      doc.fontSize(12).text(`Övrigt: ${p.notes || "-"}`, { indent: 20 });
       doc
         .fontSize(12)
         .text(`Dagar närvarande: ${formatDays(p.daysAttending)}`, {
-          indent: 10,
+          indent: 20,
         });
       doc
         .fontSize(12)
         .text(`Dagar övernattning: ${formatDays(p.daysOvernighting)}`, {
-          indent: 10,
+          indent: 20,
         });
-      doc.fontSize(12).text(`Transport: ${p.transport || "-"}`, { indent: 10 });
+      doc.fontSize(12).text(`Transport: ${p.transport || "-"}`, { indent: 20 });
 
       if (guest.plusOne) {
         const q = guest.plusOne;
         doc.moveDown(0.25);
         doc
-          .fontSize(13)
+          .fontSize(12)
           .text(`Plus one: ${q.name}`, { indent: 10, underline: false });
         doc
           .fontSize(12)
@@ -147,7 +148,10 @@ export const POST = async (request: Request) => {
           .text(`Måltidsval: ${q.mealChoice || "-"}`, { indent: 20 });
         doc
           .fontSize(12)
-          .text(`Anteckningar: ${q.notes || "-"}`, { indent: 20 });
+          .text(`Måltidsval fredag: ${q.mealChoiceFriday || "-"}`, {
+            indent: 20,
+          });
+        doc.fontSize(12).text(`Övrigt: ${q.notes || "-"}`, { indent: 20 });
         doc
           .fontSize(12)
           .text(`Dagar närvarande: ${formatDays(q.daysAttending)}`, {

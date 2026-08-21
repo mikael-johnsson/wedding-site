@@ -10,6 +10,7 @@ type PersonInput = {
   attending: boolean;
   allergies: string;
   mealChoice: string;
+  mealChoiceFriday: string;
   notes: string;
   daysAttending: WeddingDay[];
   daysOvernighting: WeddingDay[];
@@ -45,6 +46,7 @@ const readPerson = (formData: FormData, prefix: string): PersonInput => {
     attending: readBoolean(formData, `${prefix}Attending`),
     allergies: readString(formData, `${prefix}Allergies`),
     mealChoice: readString(formData, `${prefix}MealChoice`),
+    mealChoiceFriday: readString(formData, `${prefix}MealChoiceFriday`),
     notes: readString(formData, `${prefix}Notes`),
     daysAttending: readDays(formData, `${prefix}DaysAttending`),
     daysOvernighting: readDays(formData, `${prefix}DaysOvernighting`),
@@ -72,12 +74,13 @@ export const saveGuestRsvp = async (formData: FormData) => {
   const numberOfGuests =
     (primaryGuest.attending ? 1 : 0) + (plusOne?.attending ? 1 : 0);
 
-  await GuestModel.create({
+  const res = await GuestModel.create({
     primaryGuest,
     plusOne,
     numberOfGuests,
     rsvpSubmittedAt: new Date(),
   });
+  console.log("Res", res);
 
   if (primaryGuest.attending) {
     redirect("/?submitted=1");

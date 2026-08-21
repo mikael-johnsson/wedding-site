@@ -1,5 +1,7 @@
 "use client";
 
+import { Dispatch, SetStateAction } from "react";
+
 const weddingDays = [
   { value: "friday", label: "Fredag" },
   { value: "saturday", label: "Lördag" },
@@ -11,18 +13,29 @@ const overNightDays = [
   { value: "saturday", label: "Lördag" },
 ] as const;
 
+type DayCheckboxGroupProps = {
+  prefix: "primary" | "plusOne";
+  name: "DaysAttending" | "DaysOvernighting";
+  title: string;
+  required?: boolean;
+  setAttendingFriday?: Dispatch<SetStateAction<boolean | null>>;
+};
+
 function DayCheckboxGroup({
   prefix,
   name,
   title,
   required,
-}: {
-  prefix: "primary" | "plusOne";
-  name: "DaysAttending" | "DaysOvernighting";
-  title: string;
-  required?: boolean;
-}) {
-  const days = name === "DaysAttending" ? weddingDays : overNightDays;
+  setAttendingFriday,
+}: DayCheckboxGroupProps) {
+  const attendingDays = name === "DaysAttending" ? true : false;
+  const days = attendingDays ? weddingDays : overNightDays;
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value === "friday" && attendingDays) {
+      setAttendingFriday?.(event.target.checked);
+    }
+  };
   return (
     <fieldset className="grid gap-3 rounded-xl border border-stone-200 bg-white p-4">
       <legend className="px-1 text-sm font-medium text-stone-700">
@@ -39,6 +52,7 @@ function DayCheckboxGroup({
               type="checkbox"
               value={day.value}
               required={required}
+              onChange={handleChange}
             />
             {day.label}
           </label>

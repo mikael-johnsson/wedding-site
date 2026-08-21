@@ -75,6 +75,10 @@ const GuestCard = ({
               <strong>Matval:</strong> {primaryGuest.mealChoice || "Ingen"}
             </p>
             <p>
+              <strong>Matval fredag:</strong>{" "}
+              {primaryGuest.mealChoiceFriday || "Inget val gjort"}
+            </p>
+            <p>
               <strong>Meddelande:</strong> {primaryGuest.notes || "Inget"}
             </p>
             <p>
@@ -104,6 +108,10 @@ const GuestCard = ({
               <p>
                 <strong>+1 Matval:</strong>{" "}
                 {plusOne.mealChoice || "Inget val gjort"}
+              </p>
+              <p>
+                <strong>Matval fredag:</strong>{" "}
+                {plusOne.mealChoiceFriday || "Inget val gjort"}
               </p>
               <p>
                 <strong>+1 Meddelande:</strong>{" "}

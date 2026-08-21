@@ -19,6 +19,7 @@ function PersonSection({
   onAttendingChange?: (value: boolean) => void;
 }) {
   const [attending, setAttending] = useState<boolean | null>(null);
+  const [attendingFriday, setAttendingFriday] = useState<boolean | null>(null);
 
   return (
     <fieldset className="grid gap-4 rounded-2xl border border-stone-200 bg-stone-50 p-5">
@@ -116,7 +117,25 @@ function PersonSection({
             name="DaysAttending"
             prefix={prefix}
             title="Vilka dagar är du med?"
+            setAttendingFriday={setAttendingFriday}
           />
+          {attendingFriday === true && (
+            <div>
+              <label
+                className={labelClasses}
+                htmlFor={`${prefix}MealChoiceFriday`}
+              >
+                Middagsval fredag
+              </label>
+              <textarea
+                className={`${fieldClasses} min-h-18`}
+                id={`${prefix}MealChoiceFriday`}
+                name={`${prefix}MealChoiceFriday`}
+                rows={2}
+                placeholder="Kött eller vegetariskt"
+              />
+            </div>
+          )}
 
           <DayCheckboxGroup
             name="DaysOvernighting"
