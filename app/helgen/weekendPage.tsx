@@ -6,7 +6,7 @@ const WeekendPage = () => {
       <h2 className="text-3xl font-heading text-center mb-8">HELGEN</h2>
       <div className="container mx-auto mt-8 flex flex-col items-center gap-4 px-4 md:px-0 md:gap-6 py-6 xl:flex-row xl:justify-center xl:gap-8">
         {/* FREDAG */}
-        <div className="w-full max-w-125 min-h-125 rounded border py-5 px-3 flex flex-col justify-between lg:px-4 xl:min-h-145">
+        <div className="w-full max-w-125 min-h-125 rounded border py-5 px-3 flex flex-col justify-between lg:px-4 xl:min-h-145 2xl:min-h-165">
           <div>
             <Image
               src="/toftaholm_2.jpeg"
@@ -35,7 +35,7 @@ const WeekendPage = () => {
         </div>
 
         {/* LÖRDAG */}
-        <div className="w-full max-w-125 min-h-125 rounded border py-5 px-3 flex flex-col justify-between lg:px-4 xl:min-h-145">
+        <div className="w-full max-w-125 min-h-125 rounded border py-5 px-3 flex flex-col justify-between lg:px-4 xl:min-h-145 2xl:min-h-165">
           <div>
             <Image
               src="/varnamo_kyrka.jpg"
@@ -69,7 +69,7 @@ const WeekendPage = () => {
         </div>
 
         {/* SÖNDAG */}
-        <div className="w-full max-w-125 min-h-125 rounded border py-5 px-3 flex flex-col justify-between lg:px-4 xl:min-h-145">
+        <div className="w-full max-w-125 min-h-125 rounded border py-5 px-3 flex flex-col justify-between lg:px-4 xl:min-h-145 2xl:min-h-165">
           <div>
             <Image
               src="/toftaholm_1.jpeg"
