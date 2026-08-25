@@ -29,9 +29,9 @@ const ToastPage = () => {
   return (
     <section id="toast" className="min-h-screen px-5 scroll-mt-30">
       <h1 className="text-4xl font-heading text-center mb-8">
-        TOAST & KYRKVÄRD
+        TOASTPAR & KYRKVÄRDAR
       </h1>
-      <div className="mx-auto">
+      <div className="mx-auto sm:w-117">
         <div className="w-full px-4 py-10">
           <h2 className="text-2xl font-heading text-center mb-10">
             Toastparet
@@ -45,7 +45,7 @@ const ToastPage = () => {
               height={300}
               className="mx-auto rounded-lg shadow-xl"
             />
-            <div className="mt-4 flex flex-col gap-4 mx-auto ">
+            <div className="mt-4 flex flex-col gap-4 mx-auto sm:text-center">
               <p>
                 Sveriges främsta goals-par kommer leda er genom denna
                 bröllopshelg. The Sokolis är alltid on fleak & har ständigt ett
@@ -82,7 +82,7 @@ const ToastPage = () => {
               height={300}
               className="mx-auto rounded-lg shadow-xl"
             />
-            <div className="mt-4 flex flex-col gap-4 mx-auto">
+            <div className="mt-4 flex flex-col gap-4 mx-auto sm:text-center">
               <p>
                 De mest charmiga & välkomnande människorna vi känner kommer
                 guida er kring vigseln. Har du kört vilse, behöver du hjälp med
