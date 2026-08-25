@@ -7,7 +7,7 @@ const LoginPage = () => {
         action={loginUser}
         className="p-8 rounded shadow-lg w-full h-fit max-w-md flex flex-col gap-4 mt-30"
       >
-        <h2 className="text-2xl font-heading mb-4">Logga in</h2>
+        <h2 className="text-3xl font-heading mb-4">Logga in</h2>
         <div className="flex flex-col gap-1">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"

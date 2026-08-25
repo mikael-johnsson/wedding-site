@@ -16,7 +16,7 @@ export default async function Home({ searchParams }: GuestsPageProps) {
   const authUser = await checkAuth();
 
   return (
-    <main className="flex flex-col gap-25  px-7 lg:px-18 xl:px-35 pt-10 ">
+    <main className="flex flex-col gap-25  px-4 lg:px-18 xl:px-22 pt-10 ">
       <section id="hem" className="flex flex-col gap-10 scroll-mt-40">
         <div className="flex items-center flex-col lg:flex-row lg:gap-10 lg:justify-center xl:px-15">
           <div className="w-[97%] md:w-[70%] py-20 md:mx-auto">
@@ -37,7 +37,7 @@ export default async function Home({ searchParams }: GuestsPageProps) {
           />
         </div>
       </section>
-      <section className="mx-auto flex w-full flex-col items-center gap-20 sm:w-11/12 xl:w-[65%]">
+      <section className="mx-auto flex w-full flex-col items-center gap-20 sm:w-11/12 xl:w-[75%]">
         <div className="flex flex-col-reverse items-center justify-evenly gap-6 w-[85%] lg:flex-row ">
           <Image
             src="/simon_olivia_orange.jpeg"
@@ -49,7 +49,7 @@ export default async function Home({ searchParams }: GuestsPageProps) {
           <p className="text-center sm:text-lg">
             2018 föll vi för varandra.
             <br />
-            2021 blev vi äntligen vi.
+            2021 blev det äntligen vi.
             <br />
             2027 säger vi ja.
             <br />
@@ -57,15 +57,15 @@ export default async function Home({ searchParams }: GuestsPageProps) {
           </p>
         </div>
 
-        <div className="flex flex-col items-center justify-evenly gap-6 w-[80%] lg:flex-row">
-          <p className="text-center md:w-[50%] lg:w-[38%] sm:text-lg ">
-            Vi fixar en oförglömlig helg i Småland. Dyk upp i dina finaste och
-            mest dansvänliga kläder.
+        <div className="flex flex-col items-center justify-evenly gap-6 lg:flex-row">
+          <p className="text-center w-80 sm:w-100 sm:text-lg">
+            Vi fixar en oförglömlig helg i Smålands skogar. Du behöver bara dyka
+            upp i dina finaste och mest dansvänliga kläder!
             <br />
             <br />
-            Era underbara barn älskar vi. Just denna helg får de dock tillbringa
-            på annan plats. Givetvis med undantag för småttingarna som
-            fortfarande ammar.
+            Era underbara barn älskar vi men denna helg får de tillbringa på
+            annan plats. Givetvis med undantag för de minsta som fortfarande
+            ammar.
           </p>
           <Image
             src="/frances.jpeg"

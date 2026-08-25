@@ -142,7 +142,7 @@ function PersonSection({
             prefix={prefix}
             title="Vilka dagar sover du över?"
           />
-          <div className="p-2">
+          <div className="p-1">
             <span className="text-md text-text-black italic">
               OBS! Boende bokas på egen hand. Uppge Olivia & Simon vid bokning.
               Mer om boende

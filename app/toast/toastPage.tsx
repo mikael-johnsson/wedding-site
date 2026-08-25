@@ -28,14 +28,12 @@ const ToastPage = () => {
   }, [status, message]);
   return (
     <section id="toast" className="min-h-screen px-5 scroll-mt-30">
-      <h1 className="text-4xl font-heading text-center mb-8">
+      <h2 className="text-4xl font-heading text-center mb-8">
         TOASTPAR & KYRKVÄRDAR
-      </h1>
+      </h2>
       <div className="mx-auto sm:w-117">
-        <div className="w-full px-4 py-10">
-          <h2 className="text-2xl font-heading text-center mb-10">
-            Toastparet
-          </h2>
+        <div className="w-full py-5">
+          <h3 className="text-2xl font-heading text-center mb-8">Toastparet</h3>
           <div>
             <h3 className="text-center text-lg mb-2">Irma & Nicklas Sokoli</h3>
             <Image
@@ -45,14 +43,14 @@ const ToastPage = () => {
               height={300}
               className="mx-auto rounded-lg shadow-xl"
             />
-            <div className="mt-4 flex flex-col gap-4 mx-auto sm:text-center">
-              <p>
+            <div className="mt-4 flex flex-col items-center gap-4 mx-auto text-center">
+              <p className="w-70 sm:w-95 md:w-125">
                 Sveriges främsta goals-par kommer leda er genom denna
-                bröllopshelg. The Sokolis är alltid on fleak & har ständigt ett
+                bröllopshelg. The Sokolis är ständigt on fleak & har alltid ett
                 kanonskämt i rockärmen. De kan helt enkelt hjälpa dig med allt
                 från look till att skapa ett riktigt partyhöjande spex!
               </p>
-              <p>Irma Sokoli: 070-427 05 67</p>
+              <p className="text-center">Irma Sokoli: 070-427 05 67</p>
             </div>
           </div>
           <div className="flex flex-col justify-center mt-7 items-center gap-3">
@@ -60,15 +58,14 @@ const ToastPage = () => {
               onClick={() => setIsModalOpen(true)}
               className="border rounded-md p-2 bg-text-black text-bg-primary w-40"
             >
-              Anmäl tal
+              Anmäl tal / spex
             </button>
-            <p>Här anmäler du tal eller spex!</p>
           </div>
         </div>
-        <div className="w-full px-4 py-10">
-          <h2 className="text-2xl font-heading text-center mb-10">
+        <div className="w-full py-5">
+          <h3 className="text-2xl font-heading text-center mb-8">
             Kyrkvärdarna
-          </h2>
+          </h3>
 
           <div>
             <h3 className="text-center text-lg mb-2">
@@ -82,8 +79,8 @@ const ToastPage = () => {
               height={300}
               className="mx-auto rounded-lg shadow-xl"
             />
-            <div className="mt-4 flex flex-col gap-4 mx-auto sm:text-center">
-              <p>
+            <div className="mt-4 flex flex-col items-center gap-4 mx-auto text-center">
+              <p className="w-70 sm:w-95 md:w-125">
                 De mest charmiga & välkomnande människorna vi känner kommer
                 guida er kring vigseln. Har du kört vilse, behöver du hjälp med
                 skjuts eller har du glömt näsdukar? Oavsett vad finns
