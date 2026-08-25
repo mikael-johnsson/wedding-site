@@ -16,7 +16,7 @@ export default async function Home({ searchParams }: GuestsPageProps) {
   const authUser = await checkAuth();
 
   return (
-    <main className="flex flex-col gap-25  px-7 lg:px-25 xl:px-35 pt-10 ">
+    <main className="flex flex-col gap-25  px-7 lg:px-18 xl:px-35 pt-10 ">
       <section id="hem" className="flex flex-col gap-10 scroll-mt-40">
         <div className="flex items-center flex-col lg:flex-row lg:gap-10 lg:justify-center xl:px-15">
           <div className="w-[97%] md:w-[70%] py-20 md:mx-auto">
