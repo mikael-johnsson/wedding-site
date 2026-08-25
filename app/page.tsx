@@ -38,7 +38,7 @@ export default async function Home({ searchParams }: GuestsPageProps) {
         </div>
       </section>
       <section className="mx-auto flex w-full flex-col items-center gap-20 sm:w-11/12 xl:w-[65%]">
-        <div className="flex flex-col-reverse items-center justify-between gap-6 w-[85%] lg:flex-row ">
+        <div className="flex flex-col-reverse items-center justify-evenly gap-6 w-[85%] lg:flex-row ">
           <Image
             src="/simon_olivia_orange.jpeg"
             alt="Wedding"
@@ -47,24 +47,26 @@ export default async function Home({ searchParams }: GuestsPageProps) {
             className="rounded-lg shadow-xl"
           />
           <p className="text-center sm:text-lg">
-            2018 blev vi kära. 2021 fick vi äntligen varann. 2027 ska vi gifta
-            oss och vill att DU ska vara med❤️
+            2018 föll vi för varandra.
+            <br />
+            2021 blev vi äntligen vi.
+            <br />
+            2027 säger vi ja.
+            <br />
+            Det vill vi fira med DIG ❤️
           </p>
         </div>
-        <div className="flex flex-col items-center justify-between gap-6 w-[80%] lg:flex-row">
-          <p className="text-center sm:text-lg">
-            Vi fixar en oförglömlig helg i Småland. Du behöver bara dyka upp i
-            dina finaste, och mest dansvänliga, kläder.
+
+        <div className="flex flex-col items-center justify-evenly gap-6 w-[80%] lg:flex-row">
+          <p className="text-center md:w-[50%] lg:w-[38%] sm:text-lg ">
+            Vi fixar en oförglömlig helg i Småland. Dyk upp i dina finaste och
+            mest dansvänliga kläder.
+            <br />
+            <br />
+            Era underbara barn älskar vi. Just denna helg får de dock tillbringa
+            på annan plats. Givetvis med undantag för småttingarna som
+            fortfarande ammar.
           </p>
-          <Image
-            src="/simon_olivia_hast.jpeg"
-            alt="Wedding"
-            width={350}
-            height={470}
-            className="rounded-lg shadow-xl"
-          />
-        </div>
-        <div className="flex flex-col-reverse items-center justify-between gap-6 w-[80%] lg:flex-row">
           <Image
             src="/frances.jpeg"
             alt="Wedding"
@@ -72,10 +74,6 @@ export default async function Home({ searchParams }: GuestsPageProps) {
             height={470}
             className="rounded-lg shadow-xl"
           />
-          <p className="text-center sm:text-lg">
-            Era underbara barn älskar vi. Men just denna helg får de tillbringa
-            på annan plats.
-          </p>
         </div>
       </section>
 
