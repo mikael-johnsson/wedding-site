@@ -42,9 +42,7 @@ const OSAPage = () => {
     <section id="osa" className="text-text-black scroll-mt-30">
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
         <header className="grid gap-4 text-center">
-          <h1 className="text-3xl font-heading sm:text-4xl">
-            BRÖLLOPSINBJUDAN
-          </h1>
+          <h1 className="text-4xl font-heading">BRÖLLOPSINBJUDAN</h1>
           <p className="mx-auto max-w-xl text-text-black sm:text-lg">
             Svara senast 31 maj 2027.
           </p>
