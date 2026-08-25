@@ -15,7 +15,9 @@ const WeekendPage = () => {
               width={500}
               height={800}
             />
-            <h2 className="text-2xl font-heading text-center my-10">FREDAG</h2>
+            <h2 className="text-2xl font-heading text-center my-10">
+              FREDAG 10/9
+            </h2>
             <p className="text-md font-heading text-center ">
               Plats: Toftaholm Herrgård
             </p>
@@ -42,7 +44,9 @@ const WeekendPage = () => {
               width={500}
               height={800}
             />
-            <h2 className="text-2xl font-heading text-center my-10">LÖRDAG</h2>
+            <h2 className="text-2xl font-heading text-center my-10">
+              LÖRDAG 11/9
+            </h2>
             <p className="text-md font-heading text-center ">
               Plats: Värnamo Kyrka / <br /> Toftaholm Herrgård
             </p>
@@ -73,7 +77,9 @@ const WeekendPage = () => {
               width={500}
               height={800}
             />
-            <h2 className="text-2xl font-heading text-center my-10">SÖNDAG</h2>
+            <h2 className="text-2xl font-heading text-center my-10">
+              SÖNDAG 12/9
+            </h2>
             <p className="text-md font-heading text-center">
               Plats: Toftaholm Herrgård
             </p>
