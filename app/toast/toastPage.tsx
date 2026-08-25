@@ -27,7 +27,7 @@ const ToastPage = () => {
     );
   }, [status, message]);
   return (
-    <section id="toast" className="min-h-screen px-10 scroll-mt-30">
+    <section id="toast" className="min-h-screen px-5 scroll-mt-30">
       <h1 className="text-4xl font-heading text-center mb-8">
         TOAST & KYRKVÄRD
       </h1>
@@ -36,40 +36,26 @@ const ToastPage = () => {
           <h2 className="text-2xl font-heading text-center mb-10">
             Toastparet
           </h2>
-          <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
-            <div>
-              <h3 className="text-center text-lg mb-2">Toast Toastsson</h3>
-              <Image
-                src="/toast_placeholder.jpg"
-                alt="Toast"
-                width={400}
-                height={300}
-                className="mx-auto rounded-lg shadow-xl"
-              />
-              <div className="mt-4 flex flex-col gap-4 mx-auto text-center">
-                <p>Här är info om toastpersonen!</p>
-                <p>Mejl: xxxxx@exempel.se</p>
-                <p>Telefon: xxx-xxx xx xx</p>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-center text-lg mb-2">Toast Toastsson</h3>
-
-              <Image
-                src="/toast_placeholder.jpg"
-                alt="Toast"
-                width={400}
-                height={300}
-                className="mx-auto rounded-lg shadow-xl"
-              />
-              <div className="mt-4 flex flex-col gap-4 mx-auto text-center">
-                <p>Här är info om toastpersonen!</p>
-                <p>Mejl: xxxxx@exempel.se</p>
-                <p>Telefon: xxx-xxx xx xx</p>
-              </div>
+          <div>
+            <h3 className="text-center text-lg mb-2">Irma & Nicklas Sokoli</h3>
+            <Image
+              src="/toast-paret.jpeg"
+              alt="Toast"
+              width={400}
+              height={300}
+              className="mx-auto rounded-lg shadow-xl"
+            />
+            <div className="mt-4 flex flex-col gap-4 mx-auto ">
+              <p>
+                Sveriges främsta goals-par kommer leda er genom denna
+                bröllopshelg. The Sokolis är alltid on fleak & har ständigt ett
+                kanonskämt i rockärmen. De kan helt enkelt hjälpa dig med allt
+                från look till att skapa ett riktigt partyhöjande spex!
+              </p>
+              <p>Irma Sokoli: 070-427 05 67</p>
             </div>
           </div>
-          <div className="flex flex-col justify-center mt-10 items-center gap-4">
+          <div className="flex flex-col justify-center mt-7 items-center gap-3">
             <button
               onClick={() => setIsModalOpen(true)}
               className="border rounded-md p-2 bg-text-black text-bg-primary w-40"
@@ -83,42 +69,28 @@ const ToastPage = () => {
           <h2 className="text-2xl font-heading text-center mb-10">
             Kyrkvärdarna
           </h2>
-          <div className="flex flex-col gap-8 sm:flex-row sm:justify-between">
-            <div>
-              <h3 className="text-center text-lg mb-2">
-                Kyrkvärd Kyrkvärdsson
-              </h3>
 
-              <Image
-                src="/priest_placeholder_2.jpg"
-                alt="Toast"
-                width={400}
-                height={300}
-                className="mx-auto rounded-lg shadow-xl"
-              />
-              <div className="mt-4 flex flex-col gap-4 mx-auto text-center">
-                <p>Här är info om kyrkvärden!</p>
-                <p>Mejl: xxxxx@exempel.se</p>
-                <p>Telefon: xxx-xxx xx xx</p>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-center text-lg mb-2">
-                Kyrkvärd Kyrkvärdsson
-              </h3>
+          <div>
+            <h3 className="text-center text-lg mb-2">
+              Sarah Sandahl & Linus Berg
+            </h3>
 
-              <Image
-                src="/priest_placeholder_2.jpg"
-                alt="Toast"
-                width={400}
-                height={300}
-                className="mx-auto rounded-lg shadow-xl"
-              />
-              <div className="mt-4 flex flex-col gap-4 mx-auto text-center">
-                <p>Här är info om kyrkvärden!</p>
-                <p>Mejl: xxxxx@exempel.se</p>
-                <p>Telefon: xxx-xxx xx xx</p>
-              </div>
+            <Image
+              src="/kyrkvardarna.jpeg"
+              alt="Toast"
+              width={400}
+              height={300}
+              className="mx-auto rounded-lg shadow-xl"
+            />
+            <div className="mt-4 flex flex-col gap-4 mx-auto">
+              <p>
+                De mest charmiga & välkomnande människorna vi känner kommer
+                guida er kring vigseln. Har du kört vilse, behöver du hjälp med
+                skjuts eller har du glömt näsdukar? Oavsett vad finns
+                lillasyster bonna-Berntsson & hennes ljuvliga vapendragare där
+                för dig!
+              </p>
+              <p>Sarah Sandahl: 073-093 37 07</p>
             </div>
           </div>
         </div>
