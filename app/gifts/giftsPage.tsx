@@ -7,7 +7,7 @@ const GiftsPage = () => {
       className="text-text-black sm:px-6 lg:px-8 scroll-mt-30"
     >
       <h2 className="text-3xl font-heading text-center mb-8">GÅVOR</h2>
-      <p className="text-center w-70 md:w-125 mx-auto mb-4">
+      <p className="text-center w-80 md:w-125 mx-auto mb-4">
         Den största gåvan är att få fira denna dagen med dig! Vill du också
         bidra med en slant till vår bröllopsresa blir vi extra glada.
       </p>

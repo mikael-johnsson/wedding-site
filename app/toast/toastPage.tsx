@@ -44,7 +44,7 @@ const ToastPage = () => {
               className="mx-auto rounded-lg shadow-xl"
             />
             <div className="mt-4 flex flex-col items-center gap-4 mx-auto text-center">
-              <p className="w-70 sm:w-95 md:w-125">
+              <p className="w-73 sm:w-109 md:w-120">
                 Sveriges främsta goals-par kommer leda er genom denna
                 bröllopshelg. The Sokolis är ständigt on fleak & har alltid ett
                 kanonskämt i rockärmen. De kan helt enkelt hjälpa dig med allt
