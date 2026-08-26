@@ -58,15 +58,18 @@ export default async function Home({ searchParams }: GuestsPageProps) {
         </div>
 
         <div className="flex flex-col items-center justify-evenly gap-6 lg:flex-row">
-          <p className="text-center w-80 sm:w-95 sm:text-lg">
-            Vi fixar en oförglömlig helg i Smålands skogar. Du behöver bara dyka
-            upp i dina finaste och mest dansvänliga kläder!
-          </p>
-          <p className="text-center w-74 sm:w-100 sm:text-lg">
-            Era underbara barn älskar vi men denna helg får de tillbringa på
-            annan plats. Givetvis med undantag för de minsta som fortfarande
-            ammar.
-          </p>
+          <div>
+            <p className="text-center w-80 sm:w-95 sm:text-lg">
+              Vi fixar en oförglömlig helg i Smålands skogar. Du behöver bara
+              dyka upp i dina finaste och mest dansvänliga kläder!
+            </p>
+            <br />
+            <p className="text-center w-74 sm:w-100 sm:text-lg">
+              Era underbara barn älskar vi men denna helg får de tillbringa på
+              annan plats. Givetvis med undantag för de minsta som fortfarande
+              ammar.
+            </p>
+          </div>
           <Image
             src="/frances.jpeg"
             alt="Wedding"
