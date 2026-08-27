@@ -66,8 +66,7 @@ export default async function Home({ searchParams }: GuestsPageProps) {
             <br />
             <p className="text-center w-74 sm:w-100 sm:text-lg">
               Era underbara barn älskar vi men denna helg får de tillbringa på
-              annan plats. Givetvis med undantag för de minsta som fortfarande
-              ammar.
+              annan plats. Givetvis med undantag för de allra minsta.
             </p>
           </div>
           <Image

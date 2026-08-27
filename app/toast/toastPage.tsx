@@ -81,7 +81,7 @@ const ToastPage = () => {
             />
             <div className="mt-4 flex flex-col items-center gap-4 mx-auto text-center">
               <p className="w-70 sm:w-95 md:w-125">
-                De mest charmiga & välkomnande människorna vi känner kommer
+                De härligaste & mest välkomnande människorna vi känner kommer
                 guida er kring vigseln. Har du kört vilse, behöver du hjälp med
                 skjuts eller har du glömt näsdukar? Oavsett vad finns
                 lillasyster bonna-Berntsson & hennes ljuvliga vapendragare där
