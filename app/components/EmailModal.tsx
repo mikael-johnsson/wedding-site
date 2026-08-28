@@ -35,8 +35,7 @@ const EmailModal = ({ setIsModalOpen }: EmailModalProps) => {
     <div className="fixed inset-0 z-1000 flex items-center justify-center backdrop-blur-xs bg-black/20">
       <div className="flex flex-col items-center gap-4 w-full max-w-md bg-bg-primary text-primary rounded-xl shadow-xl px-8 py-6">
         <h2 className="font-semibold">Anmälan av tal</h2>
-        <p>Detta meddelande skickas till toastvärdarna</p>
-        <p>OBS! Nu i utvecklingsfas skickas det till Mikael Johnsson</p>
+        <p>Detta meddelande skickas till toastparet</p>
         <form onSubmit={handleSend} className="flex flex-col gap-2 w-full">
           <div className="flex justify-between">
             <label htmlFor="name">Namn:</label>
@@ -57,13 +56,13 @@ const EmailModal = ({ setIsModalOpen }: EmailModalProps) => {
             />
           </div>
           <div className="flex gap-3 mt-2 justify-end">
-            <button className="border rounded p-2 bg-text-black text-bg-primary">
+            <button className="border rounded p-2 bg-text-black text-bg-primary hover:cursor-pointer">
               Skicka
             </button>
             <button
               onClick={() => setIsModalOpen(false)}
               type="button"
-              className="border rounded p-2 bg-text-black text-bg-primary"
+              className="border rounded p-2 bg-text-black text-bg-primary hover:cursor-pointer"
             >
               Avbryt
             </button>

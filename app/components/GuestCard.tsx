@@ -32,7 +32,7 @@ const GuestCard = ({
     <li key={_id} className="border p-4 rounded-lg ">
       <button
         onClick={() => setCardOpen(!cardOpen)}
-        className="px-3 py-1 border rounded mb-2"
+        className="px-3 py-1 border rounded mb-2 hover:cursor-pointer"
       >
         {cardOpen ? "Stäng" : "Öppna"}
       </button>

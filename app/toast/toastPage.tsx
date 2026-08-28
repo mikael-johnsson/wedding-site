@@ -56,7 +56,7 @@ const ToastPage = () => {
           <div className="flex flex-col justify-center mt-7 items-center gap-3">
             <button
               onClick={() => setIsModalOpen(true)}
-              className="border rounded-md p-2 bg-text-black text-bg-primary w-40"
+              className="hover:cursor-pointer border rounded-md p-2 bg-text-black text-bg-primary w-40"
             >
               Anmäl tal / spex
             </button>

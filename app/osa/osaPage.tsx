@@ -53,7 +53,7 @@ const OSAPage = () => {
           </p>
           <button
             onClick={() => setOpenForm(!openForm)}
-            className="border rounded-md p-2 mx-auto bg-text-black text-bg-primary w-40"
+            className="hover:cursor-pointer border rounded-md p-2 mx-auto bg-text-black text-bg-primary w-40"
           >
             {openForm ? "Stäng formuläret" : "Öppna formuläret"}
           </button>

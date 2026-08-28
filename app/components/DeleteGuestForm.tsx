@@ -19,13 +19,13 @@ const DeleteGuestForm = ({ guestId }: DeleteGuestFormProps) => {
         <button
           id={`delete-${guestId}`}
           type="submit"
-          className="text-red-600 border hover:underline p-1"
+          className="text-red-600 border hover:underline hover:cursor-pointer p-1"
         >
           Ja, ta bort
         </button>
       </div>
       <button
-        className={` border hover:underline p-1 ${showConfirmation ? "text-black mx-2" : "text-red-600"}`}
+        className={` border hover:underline hover:cursor-pointer p-1 ${showConfirmation ? "text-black mx-2" : "text-red-600"}`}
         type="button"
         onClick={() => setShowConfirmation(!showConfirmation)}
       >

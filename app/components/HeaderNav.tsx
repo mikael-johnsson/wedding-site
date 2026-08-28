@@ -55,7 +55,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
             <button
               type="button"
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="text-xl text-text-black"
+              className="text-xl text-text-black hover:cursor-pointer"
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
             >

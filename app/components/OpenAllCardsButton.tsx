@@ -18,7 +18,7 @@ const OpenAllCardsButton = ({ isOpen }: OpenAllCardsButtonProps) => {
     <Link
       onClick={() => setIsOpenState(!isOpenState)}
       href={`${url}openAll=${!isOpenState}`}
-      className="px-2 py-1 rounded border hover:bg-teal-900 hover:text-white"
+      className="px-2 py-1 rounded border hover:bg-teal-900 hover:text-white hover:cursor-pointer"
     >
       {isOpen ? "Stäng alla kort" : "Öppna alla kort"}
     </Link>

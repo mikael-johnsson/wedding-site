@@ -8,7 +8,7 @@ export async function POST(req: Request) {
     const { name, email, message } = await req.json();
     const emailOptions: Parameters<typeof resend.emails.send>[0] = {
       from: `${name} <onboarding@resend.dev>`,
-      to: ["mikaeljohanjohnsson@gmail.com"],
+      to: ["toastparet2027@gmail.com"],
       subject: "Anmälan av tal till Bernozzi Wedding",
       react: EmailTemplate({ name, email, message }),
     };

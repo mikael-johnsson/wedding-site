@@ -43,7 +43,7 @@ const PDFButton = ({ guests, filters, attendingStats }: PDFButtonProps) => {
 
   return (
     <button
-      className="px-2 py-1 h-fit rounded border hover:bg-teal-900 hover:text-white"
+      className="px-2 py-1 h-fit rounded border hover:bg-teal-900 hover:text-white hover:cursor-pointer"
       onClick={handleClick}
       disabled={loading}
       type="reset"

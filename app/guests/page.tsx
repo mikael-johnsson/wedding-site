@@ -109,7 +109,7 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
               </select>
             </div>
             <button
-              className="rounded border border-slate-300 px-3 py-2 text-sm font-medium text-slate-900 hover:bg-teal-900 hover:text-white"
+              className="hover:cursor-pointer rounded border border-slate-300 px-3 py-2 text-sm font-medium text-slate-900 hover:bg-teal-900 hover:text-white"
               type="submit"
             >
               Filtrera
@@ -117,7 +117,7 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
           </form>
           <form action={"/guests"} method="GET" className="flex gap-4">
             <button
-              className="px-2 py-1 rounded border hover:bg-teal-900 hover:text-white"
+              className="hover:cursor-pointer px-2 py-1 rounded border hover:bg-teal-900 hover:text-white"
               type="submit"
             >
               Rensa filter
