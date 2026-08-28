@@ -19,14 +19,12 @@
 
 @media (min-width: 640px) {
   .backgroundPositionSM {
-    background-size: 90%;
     background-position: 50% 37%;
   }
 }
 
 @media (min-width: 1280px) {
   .backgroundPositionXL {
-    width: 85%;
-    background-position: 10% 75%;
+    background-position: 0% 40%;
   }
 }

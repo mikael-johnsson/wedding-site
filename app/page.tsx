@@ -5,31 +5,21 @@ import WeekendPage from "./helgen/weekendPage";
 import LivingAndTransportPage from "./boende/boendePage";
 import ToastPage from "./toast/toastPage";
 import GiftsPage from "./gifts/giftsPage";
-import GuestsPage from "./guests/page";
-import { checkAuth } from "./actions/UserActions";
 import { backgroundOpacity } from "./styles/tailwindVariables";
 
-type GuestsPageProps = {
-  searchParams: Promise<{ attending: string; openAll: string }>;
-};
-
-export default async function Home({ searchParams }: GuestsPageProps) {
-  const authUser = await checkAuth();
-
+export default async function Home() {
   return (
     <main className="flex flex-col gap-35 items-center">
       <section
         id="hem"
-        className="w-screen scroll-mt-40 py-3 backgroundURL backgroundPositionXS backgroundPositionSM backgroundPositionXL"
+        className="w-screen scroll-mt-40 py-7 backgroundURL backgroundPositionXS backgroundPositionSM backgroundPositionXL"
       >
-        <div className=" md:w-[85%] pt-30 flex flex-col justify-center items-center gap-20 md:mx-auto ">
-          <div className="flex flex-col gap-20 justify-center px-8 ">
-            <h1
-              className={`text-4xl md:text-5xl font-heading text-center ${backgroundOpacity}`}
-            >
-              BERNOZZI WEDDING
-            </h1>
-          </div>
+        <div className="md:w-[85%] pt-30 flex flex-col justify-center items-center gap-20 md:mx-auto ">
+          <h1
+            className={`mx-2 text-4xl md:text-5xl font-heading text-center ${backgroundOpacity}`}
+          >
+            BERNOZZI WEDDING
+          </h1>
           <p className={`text-3xl text-center w-80 ${backgroundOpacity}`}>
             10 – 12 sept 2027
           </p>

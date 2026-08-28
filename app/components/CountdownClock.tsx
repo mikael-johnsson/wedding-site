@@ -22,7 +22,7 @@ const CountdownClock = () => {
   }
 
   return (
-    <div className="w-80 mx-auto ">
+    <div className="w-80 mx-auto md:w-100">
       <div
         className={`flex justify-center gap-5 md:gap-10 p-3 md:py-4 backgroundOpacity ${backgroundOpacity}`}
       >
