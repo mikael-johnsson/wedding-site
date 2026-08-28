@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { counter, TimeRemainingType } from "../lib/counter";
+import { backgroundOpacity } from "../styles/tailwindVariables";
 
 const CountdownClock = () => {
   const [timeRemaining, setTimeRemaining] =
@@ -21,8 +22,10 @@ const CountdownClock = () => {
   }
 
   return (
-    <div className="w-full mx-auto">
-      <div className="flex justify-center gap-5 md:gap-10 p-3 md:py-4 ">
+    <div className="w-80 mx-auto ">
+      <div
+        className={`flex justify-center gap-5 md:gap-10 p-3 md:py-4 backgroundOpacity ${backgroundOpacity}`}
+      >
         <div>
           <p>Dagar</p>
           <p className="text-center mt-2">{timeRemaining.days}</p>

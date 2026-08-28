@@ -7,6 +7,7 @@ import ToastPage from "./toast/toastPage";
 import GiftsPage from "./gifts/giftsPage";
 import GuestsPage from "./guests/page";
 import { checkAuth } from "./actions/UserActions";
+import { backgroundOpacity } from "./styles/tailwindVariables";
 
 type GuestsPageProps = {
   searchParams: Promise<{ attending: string; openAll: string }>;
@@ -17,21 +18,22 @@ export default async function Home({ searchParams }: GuestsPageProps) {
 
   return (
     <main className="flex flex-col gap-35 items-center">
-      <section id="hem" className="w-screen scroll-mt-40">
-        <div className=" md:w-[85%] pt-30 flex flex-col justify-center gap-20 md:mx-auto ">
-          <div className="flex flex-col gap-10 justify-center px-8">
-            <h1 className="text-4xl md:text-5xl font-heading text-center">
+      <section
+        id="hem"
+        className="w-screen scroll-mt-40 py-3 backgroundURL backgroundPositionXS backgroundPositionSM backgroundPositionXL"
+      >
+        <div className=" md:w-[85%] pt-30 flex flex-col justify-center items-center gap-20 md:mx-auto ">
+          <div className="flex flex-col gap-20 justify-center px-8 ">
+            <h1
+              className={`text-4xl md:text-5xl font-heading text-center ${backgroundOpacity}`}
+            >
               BERNOZZI WEDDING
             </h1>
-            <p className="text-3xl text-center">10 – 12 sept 2027</p>
           </div>
+          <p className={`text-3xl text-center w-80 ${backgroundOpacity}`}>
+            10 – 12 sept 2027
+          </p>
           <div className="flex flex-col items-center gap-10">
-            <Image
-              src={"/4-1-cropped.jpeg"}
-              width={800}
-              height={400}
-              alt={"Bilder på brudparet"}
-            />
             <CountdownClock />
           </div>
         </div>
@@ -83,7 +85,6 @@ export default async function Home({ searchParams }: GuestsPageProps) {
       <LivingAndTransportPage />
       <ToastPage />
       <GiftsPage />
-      {/* {authUser && <GuestsPage searchParams={searchParams} />} */}
     </main>
   );
 }
