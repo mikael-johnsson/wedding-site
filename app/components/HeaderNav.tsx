@@ -15,12 +15,12 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
   const pathname = usePathname();
 
   const links = [
-    { href: "#hem", label: "HEM" },
-    { href: "#helgen", label: "HELGEN" },
-    { href: "#osa", label: "OSA" },
-    { href: "#logistik", label: "LOGISTIK" },
-    { href: "#toast", label: "TOAST" },
-    { href: "#gifts", label: "GÅVOR" },
+    { href: "/#hem", label: "HEM" },
+    { href: "/#helgen", label: "HELGEN" },
+    { href: "/#osa", label: "OSA" },
+    { href: "/#logistik", label: "LOGISTIK" },
+    { href: "/#toast", label: "TOAST" },
+    { href: "/#gifts", label: "GÅVOR" },
   ];
 
   useEffect(() => {
@@ -80,7 +80,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
                 ))}
                 {authUser && (
                   <Link
-                    href="#guests"
+                    href="/guests"
                     className={`rounded px-2 py-2 text-text-black hover:underline ${pathname === "#guests" ? "underline" : ""} `}
                     onClick={() => setMenuOpen(false)}
                   >
@@ -121,7 +121,7 @@ const HeaderNav = ({ authUser }: HeaderNavProps) => {
             ))}
             {authUser && (
               <Link
-                href="#guests"
+                href="/guests"
                 className={`rounded p-3 mx-2 text-text-black hover:underline ${pathname === "#guests" ? "underline" : ""}`}
               >
                 GÄSTLISTAN

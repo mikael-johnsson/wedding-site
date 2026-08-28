@@ -39,7 +39,7 @@ const OSAPage = () => {
   }, [primaryAttending]);
 
   return (
-    <section id="osa" className="text-text-black scroll-mt-30">
+    <section id="osa" className="text-text-black scroll-mt-30 px-4">
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
         <header className="grid gap-4 text-center">
           <h2 className="text-2xl sm:text-3xl font-heading">
@@ -66,7 +66,7 @@ const OSAPage = () => {
           action={saveGuestRsvp}
           className={` rounded-3xl bg-white p-6 shadow-lg sm:p-8 `}
         >
-          <div className={`opacity-50`}>
+          <div className={`opacity-50 md:w-175`}>
             <fieldset
               className={`grid gap-4 rounded-2xl border border-stone-200 bg-stone-50 p-5 ${openForm ? "hidden" : "block"}`}
             >

@@ -27,7 +27,7 @@ const ToastPage = () => {
     );
   }, [status, message]);
   return (
-    <section id="toast" className="min-h-screen px-5 scroll-mt-30">
+    <section id="toast" className="min-h-screen px-4 scroll-mt-30">
       <h2 className="text-4xl font-heading text-center mb-8">
         TOASTPAR & KYRKVÄRDAR
       </h2>

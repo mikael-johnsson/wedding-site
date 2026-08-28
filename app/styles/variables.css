@@ -2,6 +2,30 @@
   --color-bg-beige: #f5f0ed;
   --color-bg-primary: #f6efca;
   --color-text-black: #46423f;
+  --color-text-white: #f5f0ed;
   --color-accent-green: #757462;
   --font-heading: "Futura";
+}
+
+.backgroundURL {
+  background-image: url("/4-1-cropped.jpeg");
+  background-repeat: no-repeat;
+}
+
+.backgroundPositionXS {
+  background-size: contain;
+  background-position: 30% 26%;
+}
+
+@media (min-width: 640px) {
+  .backgroundPositionSM {
+    background-position: 50% 50%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .backgroundPositionXL {
+    width: 85%;
+    background-position: 10% 75%;
+  }
 }

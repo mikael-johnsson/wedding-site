@@ -5,7 +5,7 @@ import WeekendPage from "./helgen/weekendPage";
 import LivingAndTransportPage from "./boende/boendePage";
 import ToastPage from "./toast/toastPage";
 import GiftsPage from "./gifts/giftsPage";
-import GuestsPage from "./guests/guestsPage";
+import GuestsPage from "./guests/page";
 import { checkAuth } from "./actions/UserActions";
 
 type GuestsPageProps = {
@@ -16,25 +16,24 @@ export default async function Home({ searchParams }: GuestsPageProps) {
   const authUser = await checkAuth();
 
   return (
-    <main className="flex flex-col gap-25  px-4 lg:px-18 xl:px-22 pt-10 ">
-      <section id="hem" className="flex flex-col gap-10 scroll-mt-40">
-        <div className="flex items-center flex-col lg:flex-row lg:gap-10 lg:justify-center xl:px-15">
-          <div className="w-[97%] md:w-[70%] py-20 md:mx-auto">
+    <main className="flex flex-col gap-35 items-center">
+      <section id="hem" className="w-screen scroll-mt-40">
+        <div className=" md:w-[85%] pt-30 flex flex-col justify-center gap-20 md:mx-auto ">
+          <div className="flex flex-col gap-10 justify-center px-8">
             <h1 className="text-4xl md:text-5xl font-heading text-center">
               BERNOZZI WEDDING
             </h1>
-            <p className="text-3xl text-center mt-15 mb-30">
-              10 – 12 sept 2027
-            </p>
+            <p className="text-3xl text-center">10 – 12 sept 2027</p>
+          </div>
+          <div className="flex flex-col items-center gap-10">
+            <Image
+              src={"/4-1-cropped.jpeg"}
+              width={800}
+              height={400}
+              alt={"Bilder på brudparet"}
+            />
             <CountdownClock />
           </div>
-          <Image
-            src="/simon_olivia_puss.jpeg"
-            alt="Wedding"
-            width={500}
-            height={600}
-            className="rounded-lg shadow-xl mt-30 sm:my-0"
-          />
         </div>
       </section>
       <section className="mx-auto flex w-full flex-col items-center gap-20 sm:w-11/12 xl:w-[75%]">
@@ -84,7 +83,7 @@ export default async function Home({ searchParams }: GuestsPageProps) {
       <LivingAndTransportPage />
       <ToastPage />
       <GiftsPage />
-      {authUser && <GuestsPage searchParams={searchParams} />}
+      {/* {authUser && <GuestsPage searchParams={searchParams} />} */}
     </main>
   );
 }

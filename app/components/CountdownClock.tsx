@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { counter, TimeRemainingType } from "../lib/counter";
-import Link from "next/link";
 
 const CountdownClock = () => {
   const [timeRemaining, setTimeRemaining] =
@@ -23,7 +22,7 @@ const CountdownClock = () => {
 
   return (
     <div className="w-full mx-auto">
-      <div className="flex justify-center gap-5 md:gap-10 p-3 md:py-4 border">
+      <div className="flex justify-center gap-5 md:gap-10 p-3 md:py-4 ">
         <div>
           <p>Dagar</p>
           <p className="text-center mt-2">{timeRemaining.days}</p>

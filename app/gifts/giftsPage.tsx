@@ -4,7 +4,7 @@ const GiftsPage = () => {
   return (
     <section
       id="gifts"
-      className="text-text-black sm:px-6 lg:px-8 scroll-mt-30"
+      className="text-text-black sm:px-6 lg:px-8 scroll-mt-30 px-4"
     >
       <h2 className="text-3xl font-heading text-center mb-8">GÅVOR</h2>
       <p className="text-center w-80 md:w-125 mx-auto mb-4">
