@@ -25,6 +25,11 @@
 
 @media (min-width: 1280px) {
   .backgroundPositionXL {
-    background-position: 0% 40%;
+    background-image: none;
+  }
+  .removeOpacity {
+    background-color: transparent;
+    text-shadow: none;
+    padding: 0;
   }
 }

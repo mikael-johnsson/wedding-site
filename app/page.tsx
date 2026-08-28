@@ -5,26 +5,43 @@ import WeekendPage from "./helgen/weekendPage";
 import LivingAndTransportPage from "./boende/boendePage";
 import ToastPage from "./toast/toastPage";
 import GiftsPage from "./gifts/giftsPage";
-import { backgroundOpacity } from "./styles/tailwindVariables";
+import {
+  backgroundOpacity,
+  removeBackgroundOpacity,
+} from "./styles/tailwindVariables";
 
 export default async function Home() {
   return (
     <main className="flex flex-col gap-35 items-center">
       <section
         id="hem"
-        className="w-screen scroll-mt-40 py-7 backgroundURL backgroundPositionXS backgroundPositionSM backgroundPositionXL"
+        className={`w-screen scroll-mt-40 py-7 backgroundURL backgroundPositionXS backgroundPositionSM backgroundPositionXL`}
       >
-        <div className="md:w-[85%] pt-30 flex flex-col justify-center items-center gap-20 md:mx-auto ">
-          <h1
-            className={`mx-2 text-4xl md:text-5xl font-heading text-center ${backgroundOpacity}`}
-          >
-            BERNOZZI WEDDING
-          </h1>
-          <p className={`text-3xl text-center w-80 ${backgroundOpacity}`}>
-            10 – 12 sept 2027
-          </p>
-          <div className="flex flex-col items-center gap-10">
-            <CountdownClock />
+        <div className="md:w-[85%] pt-30 xl:pt-20 flex justify-center items-center gap-20 md:mx-auto ">
+          <div className="h-120 flex flex-col items-center justify-evenly gap-5">
+            <h1
+              className={`mx-2 text-4xl md:text-5xl font-heading text-center ${backgroundOpacity} removeOpacity`}
+            >
+              BERNOZZI WEDDING
+            </h1>
+            <p
+              className={`text-3xl text-center w-80 ${backgroundOpacity} removeOpacity`}
+            >
+              10 – 12 sept 2027
+            </p>
+
+            <div className="flex flex-col items-center gap-10">
+              <CountdownClock />
+            </div>
+          </div>
+          <div className="hidden xl:block w-95 h-135 overflow-hidden rounded-lg shadow-xl">
+            <Image
+              className="hidden xl:block "
+              src={"/simon_olivia_glasses.jpeg"}
+              alt="Bild på brudparet"
+              width={400}
+              height={500}
+            />
           </div>
         </div>
       </section>
