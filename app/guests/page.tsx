@@ -64,20 +64,14 @@ const GuestsPage = async ({ searchParams }: GuestsPageProps) => {
 
   if (!authUser) {
     return (
-      <section
-        id="guests"
-        className="min-h-screen px-4 sm:px-6 lg:px-8 scroll-mt-30"
-      >
+      <section id="guests" className="min-h-screen px-4 pt-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-heading mb-8">Gäster</h2>
         <p className="mb-4">Du måste vara inloggad för att se gästlistan.</p>
       </section>
     );
   }
   return (
-    <section
-      id="guests"
-      className="min-h-screen px-4 sm:px-6 lg:px-8 scroll-mt-30"
-    >
+    <section id="guests" className="min-h-screen px-4 pt-4 sm:px-6 lg:px-8 ">
       <h2 className="text-3xl font-heading mb-8 text-center">GÄSTER</h2>
       <div className="flex flex-col justify-center mb-8 gap-1">
         <p>Totalt antal gäster: {amountOfAttending}</p>

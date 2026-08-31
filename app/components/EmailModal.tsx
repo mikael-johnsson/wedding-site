@@ -17,7 +17,7 @@ const EmailModal = ({ setIsModalOpen }: EmailModalProps) => {
     const message = formData.get("message") as string;
 
     try {
-      const res = await fetch("/api/email", {
+      await fetch("/api/email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

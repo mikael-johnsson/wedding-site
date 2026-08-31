@@ -10,7 +10,6 @@ if (!MONGODB_URI) {
 // We cache the connection on the global object to prevent exhausting
 // the connection pool with a new connection on every reload.
 declare global {
-  // eslint-disable-next-line no-var
   var _mongooseCache: {
     conn: typeof mongoose | null;
     promise: Promise<typeof mongoose> | null;

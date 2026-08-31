@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { formatDays } from "../lib/formatDays";
-import { Guest, PersonInfo } from "../models/Guest";
+import { PersonInfo } from "../models/Guest";
 import DeleteGuestForm from "./DeleteGuestForm";
 
 type GuestCardProps = {
@@ -24,6 +24,7 @@ const GuestCard = ({
 }: GuestCardProps) => {
   const [cardOpen, setCardOpen] = useState(defaultOpen);
 
+  // Det här funkar utan re-rendering loops, men skulle behöva en annan lösning.
   useEffect(() => {
     setCardOpen(defaultOpen);
   }, [defaultOpen]);

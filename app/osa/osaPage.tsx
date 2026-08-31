@@ -32,6 +32,7 @@ const OSAPage = () => {
     );
   }, [status, message]);
 
+  // Ändra detta till någon handleChange-funktion
   useEffect(() => {
     if (primaryAttending === false) {
       setHasPlusOne(false);

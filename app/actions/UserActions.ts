@@ -1,7 +1,7 @@
 "use server";
 
 import { connectDB } from "../lib/db";
-import UserModel, { toUserDTO, User } from "../models/User";
+import UserModel, { toUserDTO } from "../models/User";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
@@ -22,7 +22,7 @@ export const createUser = async (formData: FormData) => {
     throw new Error("Username already exists");
   }
   const hashedPassword = await bcrypt.hash(password, 10);
-  const user: User = await UserModel.create({
+  await UserModel.create({
     username,
     password: hashedPassword,
   });
@@ -88,6 +88,7 @@ export const checkAuth = async () => {
     const user = await UserModel.findById(decoded.userId);
     return user ? toUserDTO(user) : null;
   } catch (error) {
+    console.error("Error verifying JWT:", error);
     return null;
   }
 };

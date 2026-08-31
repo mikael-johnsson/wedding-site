@@ -2,6 +2,7 @@ import { formatDays } from "@/app/lib/formatDays";
 import { AttendingStats } from "@/app/models/AttendingStats";
 import type { GuestDTO } from "@/app/models/Guest";
 import { NextResponse } from "next/server";
+import PDFDocument from "pdfkit";
 
 export const runtime = "nodejs";
 
@@ -16,8 +17,6 @@ export const POST = async (request: Request) => {
       filters: string[];
       attendingStats: AttendingStats;
     } = await request.json();
-
-    const PDFDocument = require("pdfkit");
 
     const doc = new PDFDocument({ size: "A4", margin: 50 });
 

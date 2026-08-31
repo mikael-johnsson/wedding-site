@@ -5,10 +5,7 @@ import WeekendPage from "./helgen/weekendPage";
 import LivingAndTransportPage from "./boende/boendePage";
 import ToastPage from "./toast/toastPage";
 import GiftsPage from "./gifts/giftsPage";
-import {
-  backgroundOpacity,
-  removeBackgroundOpacity,
-} from "./styles/tailwindVariables";
+import { backgroundOpacity } from "./styles/tailwindVariables";
 
 export default async function Home() {
   return (
