@@ -1,28 +1,24 @@
-import EmailTemplate from "../../components/EmailTemplate";
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { transporter } from "@/app/lib/EmailTransporter";
+import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
+  const { name, email, message } = await req.json();
   try {
-    const { name, email, message } = await req.json();
-    const emailOptions: Parameters<typeof resend.emails.send>[0] = {
-      from: `${name} <onboarding@resend.dev>`,
-      to: ["toastparet2027@gmail.com"],
-      subject: "Anmälan av tal till Bernozzi Wedding",
-      react: EmailTemplate({ name, email, message }),
-    };
+    await transporter.verify();
+    console.log("Server is ready to take our messages");
 
-    const { data, error } = await resend.emails.send(emailOptions);
-    console.log("Data", data);
-    console.log("Error", error);
+    const info = await transporter.sendMail({
+      from: '"Bernozzi Wedding" <mikaeljohanjohnsson@gmail.com>',
+      to: "toastparet2027@gmail.com", // list of recipients
+      subject: "Hello", // subject line
+      text: "Hello world?", // plain text body
+      html: "<b>Hello world?</b>", // HTML body
+    });
 
-    if (error) {
-      return Response.json({ error }, { status: 500 });
-    }
-
-    return Response.json(data);
-  } catch (error) {
-    return Response.json({ error }, { status: 500 });
+    console.log("Message sent: %s", info.messageId);
+    // Preview URL is only available when using an Ethereal test account
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  } catch (err) {
+    console.error("Verification failed:", err);
   }
 }
