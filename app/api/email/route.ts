@@ -1,19 +1,20 @@
+import EmailTemplate from "@/app/components/EmailTemplate";
 import { transporter } from "@/app/lib/EmailTransporter";
 import { NextResponse } from "next/server";
+import { render } from "react-email";
 
 export async function POST(req: Request) {
   const { name, email, message } = await req.json();
   try {
     await transporter.verify();
     console.log("Server is ready to take our messages");
+    const htmlContent = await render(EmailTemplate({ name, email, message }));
 
     const info = await transporter.sendMail({
       from: `${name} <mikaeljohanjohnsson@gmail.com>`,
-      to: "mikaeljohanjohnsson@gmail.com",
+      to: "toastparet2027@gmail.com",
       subject: "Bernozzi Wedding",
-      text: "Test, detta är plain text body", // plain text body
-      // html: `<b>Mail från: ${email}. Meddelande: ${message}</b>`, // HTML body
-      html: EmailTemplate({ name, email, message }), // HTML body using the EmailTemplate component
+      html: htmlContent,
     });
     console.log("Info:", info);
     console.log("Message sent: %s", info.messageId);
