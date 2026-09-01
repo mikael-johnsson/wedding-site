@@ -32,12 +32,13 @@ const OSAPage = () => {
     );
   }, [status, message]);
 
-  // Ändra detta till någon handleChange-funktion
-  useEffect(() => {
-    if (primaryAttending === false) {
+  const handlePrimaryAttendingChange = (value: boolean) => {
+    setPrimaryAttending(value);
+
+    if (value === false) {
       setHasPlusOne(false);
     }
-  }, [primaryAttending]);
+  };
 
   return (
     <section id="osa" className="text-text-black scroll-mt-30 px-4">
@@ -85,7 +86,7 @@ const OSAPage = () => {
             <PersonSection
               prefix="primary"
               title="Huvudgäst"
-              onAttendingChange={setPrimaryAttending}
+              onAttendingChange={handlePrimaryAttendingChange}
             />
 
             {primaryAttending !== false && (

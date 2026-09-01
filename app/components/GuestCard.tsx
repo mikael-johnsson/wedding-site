@@ -24,7 +24,6 @@ const GuestCard = ({
 }: GuestCardProps) => {
   const [cardOpen, setCardOpen] = useState(defaultOpen);
 
-  // Det här funkar utan re-rendering loops, men skulle behöva en annan lösning.
   useEffect(() => {
     setCardOpen(defaultOpen);
   }, [defaultOpen]);
