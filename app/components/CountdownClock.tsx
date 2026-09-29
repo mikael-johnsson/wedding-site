@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { counter, TimeRemainingType } from "../lib/counter";
-import { backgroundOpacity } from "../styles/tailwindVariables";
 
 const CountdownClock = () => {
 	const [timeRemaining, setTimeRemaining] =
@@ -23,22 +22,22 @@ const CountdownClock = () => {
 
 	return (
 		<div className="w-80 mx-auto md:w-100">
-			<div className={`flex justify-center gap-5 md:gap-10 p-3 md:py-4 `}>
-				<div className="width-35 height-35 flex flex-col items-center justify-center bg-accent-green text-bg-beige rounded-lg p-3 gap-1">
-					<p className="text-center text-3xl">{timeRemaining.days}</p>
-					<p className="text-xs">DAGAR</p>
+			<div className={`flex justify-center gap-5 md:gap-10 p-3 md:py-4`}>
+				<div className="w-15 h-15 sm:w-20 sm:h-20 md:w-30 md:h-30 flex flex-col items-center justify-center bg-accent-green text-bg-beige rounded-lg p-2 gap-1">
+					<p className="text-center text-xl">{timeRemaining.days}</p>
+					<p className="text-[9px] sm:text-md">DAGAR</p>
 				</div>
-				<div className="width-35 height-35 flex flex-col items-center justify-center bg-accent-green text-bg-beige rounded-lg p-3 gap-1">
-					<p className="text-center text-3xl">{timeRemaining.hours}</p>
-					<p className="text-xs">TIMMAR</p>
+				<div className="w-15 h-15 sm:w-20 sm:h-20 md:w-30 md:h-30 flex flex-col items-center justify-center bg-accent-green text-bg-beige rounded-lg p-2 gap-1">
+					<p className="text-center text-xl">{timeRemaining.hours}</p>
+					<p className="text-[9px] sm:text-md">TIMMAR</p>
 				</div>
-				<div className="width-35 height-35 flex flex-col items-center justify-center bg-accent-green text-bg-beige rounded-lg p-3 gap-1">
-					<p className="text-center text-3xl">{timeRemaining.minutes}</p>
-					<p className="text-xs">MINUTER</p>
+				<div className="w-15 h-15 sm:w-20 sm:h-20 md:w-30 md:h-30 flex flex-col items-center justify-center bg-accent-green text-bg-beige rounded-lg p-2 gap-1">
+					<p className="text-center text-xl">{timeRemaining.minutes}</p>
+					<p className="text-[9px] sm:text-md">MINUTER</p>
 				</div>
-				<div className="width-35 height-35 flex flex-col items-center justify-center bg-accent-green text-bg-beige rounded-lg p-3 gap-1">
-					<p className="text-center text-3xl">{timeRemaining.seconds}</p>
-					<p className="text-xs">SEKUNDER</p>
+				<div className="w-15 h-15 sm:w-20 sm:h-20 md:w-30 md:h-30 flex flex-col items-center justify-center bg-accent-green text-bg-beige rounded-lg p-2 gap-1">
+					<p className="text-center text-xl">{timeRemaining.seconds}</p>
+					<p className="text-[9px] sm:text-md">SEKUNDER</p>
 				</div>
 			</div>
 		</div>

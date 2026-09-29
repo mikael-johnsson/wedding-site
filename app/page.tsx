@@ -15,12 +15,12 @@ const bigDot =
 
 export default async function Home() {
 	return (
-		<main className="flex flex-col gap-35 items-center">
+		<main className="flex flex-col gap-35 items-center w-full">
 			<section
 				id="hem"
-				className={`w-screen scroll-mt-40 py-7`}
+				className={`w-screen scroll-mt-40 py-7 mx-auto`}
 			>
-				<div className="md:w-[85%] pt-30 xl:pt-20 flex justify-center items-center gap-35 md:mx-auto ">
+				<div className="md:w-[85%] pt-30 xl:pt-20 flex justify-center items-center gap-35 mx-auto ">
 					<div className="flex flex-col items-center justify-evenly gap-16">
 						<h1
 							className={`mx-2 text-4xl md:text-5xl font-heading text-center`}
@@ -62,7 +62,9 @@ export default async function Home() {
 								</li>
 							</ol>
 						</div>
-						<p className="mt-10 text-4xl">Det vill vi fira med dig❤️</p>
+						<p className="mt-10 text-2xl sm:text-4xl text-center">
+							Det vill vi fira med dig❤️
+						</p>
 					</div>
 				</div>
 			</section>
