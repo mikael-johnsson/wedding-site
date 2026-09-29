@@ -1,35 +1,40 @@
 @theme {
-  --color-bg-beige: #f5f0ed;
-  --color-bg-primary: #f6efca;
-  --color-text-black: #46423f;
-  --color-text-white: #f5f0ed;
-  --color-accent-green: #757462;
-  --font-heading: "Futura";
+	--color-bg-beige: #f5f0ed;
+
+	/* --color-bg-primary: #f6efca; */
+	--color-bg-secondary: #e2e2be;
+	--color-bg-primary: #f8f6f1;
+
+	--color-text-black: #46423f;
+	--color-text-white: #f5f0ed;
+	--color-accent-green: #757462;
+	--font-heading: "Futura";
 }
 
 .backgroundURL {
-  background-image: url("/simon_olivia_glasses.jpeg");
-  background-repeat: no-repeat;
+	background-image: url("/simon_olivia_glasses.jpeg");
+	background-repeat: no-repeat;
 }
 
 .backgroundPositionXS {
-  background-size: cover;
-  background-position: center 30%;
+	background-size: cover;
+	background-position: center 30%;
 }
 
 @media (min-width: 640px) {
-  .backgroundPositionSM {
-    background-position: 50% 37%;
-  }
+	.backgroundPositionSM {
+		background-position: 50% 37%;
+		background-color: #e2e2be;
+	}
 }
 
 @media (min-width: 1280px) {
-  .backgroundPositionXL {
-    background-image: none;
-  }
-  .removeOpacity {
-    background-color: transparent;
-    text-shadow: none;
-    padding: 0;
-  }
+	.backgroundPositionXL {
+		background-image: none;
+	}
+	.removeOpacity {
+		background-color: transparent;
+		text-shadow: none;
+		padding: 0;
+	}
 }

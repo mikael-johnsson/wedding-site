@@ -11,8 +11,8 @@ const WeekendPage = () => {
 				Festen startar med skål och mat på fredagen. Kan även hända att det blir
 				en och annan överraskning under denna inledande kväll. På lördagen
 				samlas vi för vigsel i Värnamo kyrka och därefter storslagen
-				bröllopsfest. Och till sist knyter knyter vi ihop säcken med gemensam
-				frukost på söndagen.
+				bröllopsfest. Och till sist knyter vi ihop säcken med gemensam frukost
+				på söndagen.
 			</p>
 			<div className="container mx-auto mt-8 flex flex-col items-center gap-4 px-4 md:px-0 md:gap-6 py-6 xl:flex-row xl:justify-center xl:gap-8">
 				{/* FREDAG */}
