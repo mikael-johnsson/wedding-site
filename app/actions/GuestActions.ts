@@ -55,6 +55,8 @@ const readPerson = (formData: FormData, prefix: string): PersonInput => {
 };
 
 export const saveGuestRsvp = async (formData: FormData) => {
+  let redirectPath = "/?submitted=osaError";
+
   try {
     const hasPlusOne = formData.get("hasPlusOne") === "on";
 
@@ -85,15 +87,14 @@ export const saveGuestRsvp = async (formData: FormData) => {
     });
     console.log("Res", res);
 
-    if (primaryGuest.attending) {
-      redirect("/?submitted=osaSuccess");
-    } else {
-      redirect("/?submitted=osaDeclined");
-    }
+    redirectPath = primaryGuest.attending
+      ? "/?submitted=osaSuccess"
+      : "/?submitted=osaDeclined";
   } catch (error) {
     console.error("Error saving guest RSVP:", error);
-    redirect("/?submitted=osaError");
   }
+
+  redirect(redirectPath);
 };
 
 export const deleteGuest = async (guestId: string) => {

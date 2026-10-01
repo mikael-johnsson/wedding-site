@@ -25,7 +25,7 @@ export default function RootLayout({
 				{children}
 				<Toaster
 					toastOptions={{
-						style: { background: "#f5f0ed", color: "#46423f" },
+						style: { background: "#46423f", color: "#f5f0ed", border: "none" },
 					}}
 				/>{" "}
 			</body>
