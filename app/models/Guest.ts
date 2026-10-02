@@ -4,79 +4,85 @@ export type WeddingDay = "friday" | "saturday" | "sunday";
 export type OvernightDay = "friday" | "saturday";
 
 export type PersonInfo = {
-  name: string;
-  attending: boolean;
-  allergies?: string;
-  mealChoice?: string;
-  mealChoiceFriday?: string;
-  notes?: string;
-  daysAttending?: WeddingDay[];
-  daysOvernighting?: OvernightDay[];
-  transport?: string;
+	name: string;
+	attending: boolean;
+	allergies?: string;
+	mealChoice?: string;
+	mealChoiceFriday?: string;
+	notes?: string;
+	daysAttending?: WeddingDay[];
+	daysOvernighting?: OvernightDay[];
+	transport?: string;
 };
 
 export type Guest = {
-  primaryGuest: PersonInfo;
-  plusOne?: PersonInfo;
-  rsvpSubmittedAt?: Date;
-  updatedAt?: Date;
-  numberOfGuests: number;
-  _id: string;
+	primaryGuest: PersonInfo;
+	plusOne?: PersonInfo;
+	submissionToken?: string;
+	rsvpSubmittedAt?: Date;
+	updatedAt?: Date;
+	numberOfGuests: number;
+	_id: string;
 };
 
 export type GuestDTO = {
-  primaryGuest: PersonInfo;
-  plusOne?: PersonInfo;
-  rsvpSubmittedAt?: Date;
-  updatedAt?: Date;
-  numberOfGuests: number;
+	primaryGuest: PersonInfo;
+	plusOne?: PersonInfo;
+	submissionToken?: string;
+	rsvpSubmittedAt?: Date;
+	updatedAt?: Date;
+	numberOfGuests: number;
 };
 
 export const convertGuestToDTO = (guest: Guest): GuestDTO => {
-  return {
-    primaryGuest: guest.primaryGuest,
-    plusOne: guest.plusOne,
-    rsvpSubmittedAt: guest.rsvpSubmittedAt,
-    updatedAt: guest.updatedAt,
-    numberOfGuests: guest.numberOfGuests,
-  };
+	return {
+		primaryGuest: guest.primaryGuest,
+		plusOne: guest.plusOne,
+		submissionToken: guest.submissionToken,
+		rsvpSubmittedAt: guest.rsvpSubmittedAt,
+		updatedAt: guest.updatedAt,
+		numberOfGuests: guest.numberOfGuests,
+	};
 };
 
 const personInfoSchema = new Schema<PersonInfo>(
-  {
-    name: { type: String, required: true, trim: true },
-    attending: { type: Boolean, required: true, default: false },
-    allergies: { type: String, required: false, default: "" },
-    mealChoice: { type: String, required: false, default: "" },
-    mealChoiceFriday: { type: String, required: false, default: "" },
-    notes: { type: String, default: "" },
-    daysAttending: {
-      type: [String],
-      required: false,
-      default: [],
-      enum: ["friday", "saturday", "sunday"],
-    },
-    daysOvernighting: {
-      type: [String],
-      required: false,
-      default: [],
-      enum: ["friday", "saturday"],
-    },
-    transport: { type: String, required: false, default: "" },
-  },
-  { _id: false },
+	{
+		name: { type: String, required: true, trim: true },
+		attending: { type: Boolean, required: true, default: false },
+		allergies: { type: String, required: false, default: "" },
+		mealChoice: { type: String, required: false, default: "" },
+		mealChoiceFriday: { type: String, required: false, default: "" },
+		notes: { type: String, default: "" },
+		daysAttending: {
+			type: [String],
+			required: false,
+			default: [],
+			enum: ["friday", "saturday", "sunday"],
+		},
+		daysOvernighting: {
+			type: [String],
+			required: false,
+			default: [],
+			enum: ["friday", "saturday"],
+		},
+		transport: { type: String, required: false, default: "" },
+	},
+	{ _id: false },
 );
 
 const guestSchema = new Schema<Guest>(
-  {
-    primaryGuest: { type: personInfoSchema, required: true },
-    plusOne: { type: personInfoSchema, required: false },
-    rsvpSubmittedAt: { type: Date },
-    updatedAt: { type: Date, default: Date.now },
-    numberOfGuests: { type: Number, default: 0 },
-  },
-  { timestamps: true },
+	{
+		primaryGuest: { type: personInfoSchema, required: true },
+		plusOne: { type: personInfoSchema, required: false },
+		submissionToken: { type: String, required: false, trim: true },
+		rsvpSubmittedAt: { type: Date },
+		updatedAt: { type: Date, default: Date.now },
+		numberOfGuests: { type: Number, default: 0 },
+	},
+	{ timestamps: true },
 );
+
+guestSchema.index({ submissionToken: 1 }, { unique: true, sparse: true });
 
 const GuestModel = models.Guest || model<Guest>("Guest", guestSchema);
 

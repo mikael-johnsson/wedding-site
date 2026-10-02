@@ -2,17 +2,33 @@
 
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
+import { useFormStatus } from "react-dom";
 import { saveGuestRsvp } from "../actions/GuestActions";
 import PersonSection from "./formComponents/PersonSection";
 import { toast } from "sonner";
 import SubmissionNotice from "./formComponents/SubmissionNotice";
 import { submissionMessages, SubmissionStatus } from "../models/Toasts";
 
+const SubmitButton = ({ disabled }: { disabled: boolean }) => {
+	const { pending } = useFormStatus();
+
+	return (
+		<button
+			className="inline-flex w-full items-center justify-center rounded-full bg-text-black px-6 py-3 text-sm font-semibold text-bg-primary transition hover:bg-black hover:shadow hover:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+			disabled={pending || disabled}
+			type="submit"
+		>
+			{pending ? "Skickar..." : "Skicka OSA"}
+		</button>
+	);
+};
+
 const OSAPage = () => {
 	const [hasPlusOne, setHasPlusOne] = useState(false);
 	const [primaryAttending, setPrimaryAttending] = useState<boolean | null>(
 		null,
 	);
+	const [submissionToken, setSubmissionToken] = useState<string | null>(null);
 	const [openForm, setOpenForm] = useState(false);
 	const searchParams = useSearchParams();
 	const status = (searchParams.get("submitted") as SubmissionStatus) || null;
@@ -40,6 +56,14 @@ const OSAPage = () => {
 		}
 	};
 
+	const handleFormToggle = () => {
+		if (!openForm && !submissionToken) {
+			setSubmissionToken(crypto.randomUUID());
+		}
+
+		setOpenForm(!openForm);
+	};
+
 	return (
 		<section
 			id="osa"
@@ -57,7 +81,7 @@ const OSAPage = () => {
 						Om du tar med en +1 visas extra fält automatiskt.
 					</p>
 					<button
-						onClick={() => setOpenForm(!openForm)}
+						onClick={handleFormToggle}
 						className="hover:cursor-pointer border rounded-md p-2 mx-auto bg-text-black text-bg-primary w-40"
 					>
 						{openForm ? "Stäng formuläret" : "Öppna formuläret"}
@@ -71,6 +95,13 @@ const OSAPage = () => {
 					action={saveGuestRsvp}
 					className={` rounded-3xl bg-white p-6 shadow-lg sm:p-8 `}
 				>
+					{submissionToken ? (
+						<input
+							type="hidden"
+							name="submissionToken"
+							value={submissionToken}
+						/>
+					) : null}
 					<div className={`opacity-50 md:w-175`}>
 						<fieldset
 							className={`grid gap-4 rounded-2xl border border-stone-200 bg-stone-50 p-5 ${openForm ? "hidden" : "block"}`}
@@ -114,12 +145,7 @@ const OSAPage = () => {
 							</>
 						)}
 
-						<button
-							className="inline-flex w-full items-center justify-center rounded-full bg-text-black px-6 py-3 text-sm font-semibold text-bg-primary transition hover:bg-black hover:shadow hover:cursor-pointer sm:w-auto"
-							type="submit"
-						>
-							Skicka OSA
-						</button>
+						<SubmitButton disabled={!submissionToken} />
 					</div>
 				</form>
 			</div>

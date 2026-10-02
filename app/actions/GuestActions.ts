@@ -6,99 +6,131 @@ import GuestModel, { WeddingDay } from "../models/Guest";
 import { revalidatePath } from "next/cache";
 
 type PersonInput = {
-  name: string;
-  attending: boolean;
-  allergies: string;
-  mealChoice: string;
-  mealChoiceFriday: string;
-  notes: string;
-  daysAttending: WeddingDay[];
-  daysOvernighting: WeddingDay[];
-  transport: string;
+	name: string;
+	attending: boolean;
+	allergies: string;
+	mealChoice: string;
+	mealChoiceFriday: string;
+	notes: string;
+	daysAttending: WeddingDay[];
+	daysOvernighting: WeddingDay[];
+	transport: string;
 };
 
 const weddingDays: WeddingDay[] = ["friday", "saturday", "sunday"];
+const uuidPattern =
+	/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+const isDuplicateKeyError = (error: unknown): error is { code: number } => {
+	return (
+		typeof error === "object" &&
+		error !== null &&
+		"code" in error &&
+		typeof error.code === "number" &&
+		error.code === 11000
+	);
+};
 
 const readString = (formData: FormData, key: string) => {
-  const value = formData.get(key);
+	const value = formData.get(key);
 
-  return typeof value === "string" ? value.trim() : "";
+	return typeof value === "string" ? value.trim() : "";
 };
 
 const readBoolean = (formData: FormData, key: string) => {
-  return formData.get(key) === "yes";
+	return formData.get(key) === "yes";
 };
 
 const readDays = (formData: FormData, key: string): WeddingDay[] => {
-  return formData
-    .getAll(key)
-    .filter((value): value is WeddingDay => {
-      return (
-        typeof value === "string" && weddingDays.includes(value as WeddingDay)
-      );
-    })
-    .map((value) => value as WeddingDay);
+	return formData
+		.getAll(key)
+		.filter((value): value is WeddingDay => {
+			return (
+				typeof value === "string" && weddingDays.includes(value as WeddingDay)
+			);
+		})
+		.map((value) => value as WeddingDay);
 };
 
 const readPerson = (formData: FormData, prefix: string): PersonInput => {
-  return {
-    name: readString(formData, `${prefix}Name`),
-    attending: readBoolean(formData, `${prefix}Attending`),
-    allergies: readString(formData, `${prefix}Allergies`),
-    mealChoice: readString(formData, `${prefix}MealChoice`),
-    mealChoiceFriday: readString(formData, `${prefix}MealChoiceFriday`),
-    notes: readString(formData, `${prefix}Notes`),
-    daysAttending: readDays(formData, `${prefix}DaysAttending`),
-    daysOvernighting: readDays(formData, `${prefix}DaysOvernighting`),
-    transport: readString(formData, `${prefix}Transport`),
-  };
+	return {
+		name: readString(formData, `${prefix}Name`),
+		attending: readBoolean(formData, `${prefix}Attending`),
+		allergies: readString(formData, `${prefix}Allergies`),
+		mealChoice: readString(formData, `${prefix}MealChoice`),
+		mealChoiceFriday: readString(formData, `${prefix}MealChoiceFriday`),
+		notes: readString(formData, `${prefix}Notes`),
+		daysAttending: readDays(formData, `${prefix}DaysAttending`),
+		daysOvernighting: readDays(formData, `${prefix}DaysOvernighting`),
+		transport: readString(formData, `${prefix}Transport`),
+	};
 };
 
 export const saveGuestRsvp = async (formData: FormData) => {
-  let redirectPath = "/?submitted=osaError";
+	let redirectPath = "/?submitted=osaError";
+	let submissionToken = "";
 
-  try {
-    const hasPlusOne = formData.get("hasPlusOne") === "on";
+	try {
+		submissionToken = readString(formData, "submissionToken");
 
-    const primaryGuest = readPerson(formData, "primary");
+		if (!uuidPattern.test(submissionToken)) {
+			throw new Error("A valid submission token is required");
+		}
 
-    if (!primaryGuest.name) {
-      throw new Error("Primary guest name is required");
-    }
+		const hasPlusOne = formData.get("hasPlusOne") === "on";
 
-    await connectDB();
+		const primaryGuest = readPerson(formData, "primary");
 
-    const plusOne = hasPlusOne ? readPerson(formData, "plusOne") : undefined;
+		if (!primaryGuest.name) {
+			throw new Error("Primary guest name is required");
+		}
 
-    if (hasPlusOne && !plusOne?.name) {
-      throw new Error(
-        "Plus one name is required when the +1 option is selected",
-      );
-    }
+		await connectDB();
 
-    const numberOfGuests =
-      (primaryGuest.attending ? 1 : 0) + (plusOne?.attending ? 1 : 0);
+		const plusOne = hasPlusOne ? readPerson(formData, "plusOne") : undefined;
 
-    const res = await GuestModel.create({
-      primaryGuest,
-      plusOne,
-      numberOfGuests,
-      rsvpSubmittedAt: new Date(),
-    });
-    console.log("Res", res);
+		if (hasPlusOne && !plusOne?.name) {
+			throw new Error(
+				"Plus one name is required when the +1 option is selected",
+			);
+		}
 
-    redirectPath = primaryGuest.attending
-      ? "/?submitted=osaSuccess"
-      : "/?submitted=osaDeclined";
-  } catch (error) {
-    console.error("Error saving guest RSVP:", error);
-  }
+		const numberOfGuests =
+			(primaryGuest.attending ? 1 : 0) + (plusOne?.attending ? 1 : 0);
 
-  redirect(redirectPath);
+		const res = await GuestModel.create({
+			primaryGuest,
+			plusOne,
+			submissionToken,
+			numberOfGuests,
+			rsvpSubmittedAt: new Date(),
+		});
+		console.log("Res", res);
+
+		redirectPath = primaryGuest.attending
+			? "/?submitted=osaSuccess"
+			: "/?submitted=osaDeclined";
+	} catch (error) {
+		if (isDuplicateKeyError(error) && submissionToken) {
+			const existingGuest = await GuestModel.findOne({ submissionToken })
+				.select("primaryGuest.attending")
+				.lean();
+
+			if (existingGuest) {
+				redirectPath = existingGuest.primaryGuest.attending
+					? "/?submitted=osaSuccess"
+					: "/?submitted=osaDeclined";
+			}
+		} else {
+			console.error("Error saving guest RSVP:", error);
+		}
+	}
+
+	redirect(redirectPath);
 };
 
 export const deleteGuest = async (guestId: string) => {
-  await connectDB();
-  await GuestModel.findByIdAndDelete(guestId);
-  revalidatePath("/guests");
+	await connectDB();
+	await GuestModel.findByIdAndDelete(guestId);
+	revalidatePath("/guests");
 };
